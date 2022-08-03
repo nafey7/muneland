@@ -1,1 +1,4 @@
-newtext.txt
+node_modules
+
+# config file
+config.env
