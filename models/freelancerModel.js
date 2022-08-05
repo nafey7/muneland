@@ -5,31 +5,34 @@ const validator = require('validator');
 
 const freelancerSchema = new Schema({
 
-    registryName: {
+    fullName: {
         type: String,
-        required: [true, 'Registry Name is required']
+        required: [true, 'Name is required']
     },
-    userID: {
+    password: {
         type: String,
-        required: [true, 'User ID is required']
+        required: [true, 'Password is required']
     },
-    eventID: {
+    telephoneNumber: {
         type: String,
-        required: [true, 'Event ID is required']
+        required: [true, 'Telephone Number is required']
     },
-    link: {
+    emailAddress: {
         type: String,
-        required: [true, 'Link of the registry is required']
+        unique: [true, 'Account with this email is already registered'],
+        required: [true, 'Email Address is required'],
+        validate: [validator.isEmail, 'Please enter a valid Email Address']
     },
-    creationDate: {
-        type: Date,
-        default: Date.now,
-        required: [true, 'Status of Event is required']
+    nickName: {
+        type: String,
+        required: [true, 'Nick Name is required']
     },
-    private: {
-        type: Boolean,
-        required: [true, 'Privacy Status is required']
+    rating: {
+        metaverse: {type: String, required: true},
+        blockchain: {type: String, required: true},
+        nft: {type: String, required: true}
     }
+    
 },
  {
     timestamps: true
