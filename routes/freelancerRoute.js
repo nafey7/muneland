@@ -12,5 +12,16 @@ router
 .route('/login')
 .post(controller.Login);
 
+router
+.route('/card/strategy-and-vision')
+.patch(controller.EditCardStrategyAndVision);
+
+router
+.route('/card/ent-solution-playbook')
+.patch(controller.EditCardEntSolutionPlaybook);
+
+router
+.route('/card/leadership-and-socialization')
+.patch(controller.EditCardLeadershipAndSocialization);
 
 module.exports = router;
