@@ -27,10 +27,46 @@ const freelancerSchema = new Schema({
         type: String,
         required: [true, 'Nick Name is required']
     },
-    rating: {
+    selfRating: {
         metaverse: {type: String, required: true},
         blockchain: {type: String, required: true},
         nft: {type: String, required: true}
+    },
+    quizScore: {
+        type: Number,
+        required: [true, 'Quiz Score is required']
+    },
+    freelancerRating: {
+        type: Number,
+        default: 0
+    },
+    schoolDegree: {
+        type: String,
+        default: ""
+    },
+    enterprisesMissions: {
+        type: String,
+        default: ""
+    },
+    certifications: {
+        type: String,
+        default: ""
+    },
+    cv: {
+        type: String,
+        default: ""
+    },
+    linkedin: {
+        type: String,
+        default: ""
+    },
+    video: {
+        type: String,
+        default: ""
+    },
+    biography: {
+        type: String,
+        default: ""
     }
     
 },
