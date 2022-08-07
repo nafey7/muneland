@@ -12,16 +12,27 @@ router
 .route('/login')
 .post(controller.Login);
 
+// POST is to view the BOX
+router
+.route('/box')
+.post(controller.ViewBox)
+
+// POST is to view the Cards present in this Category. PATCH is to add card to the box.
 router
 .route('/card/strategy-and-vision')
+.post(controller.ViewStrategyAndVision)
 .patch(controller.EditCardStrategyAndVision);
 
+// POST is to view the Cards present in this Category. PATCH is to add card to the box.
 router
 .route('/card/ent-solution-playbook')
+.post(controller.ViewEntSolutionPlaybook)
 .patch(controller.EditCardEntSolutionPlaybook);
 
+// POST is to view the Cards present in this Category. PATCH is to add card to the box.
 router
 .route('/card/leadership-and-socialization')
+.post(controller.ViewLeadershipAndSocialization)
 .patch(controller.EditCardLeadershipAndSocialization);
 
 module.exports = router;
