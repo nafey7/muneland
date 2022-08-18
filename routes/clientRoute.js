@@ -7,9 +7,9 @@ router
 .route('/signup')
 .post(controller.Signup);
 
-// router
-// .route('/login')
-// .post(controller.Login);
+router
+.route('/login')
+.post(controller.Login);
 
 
 module.exports = router;
