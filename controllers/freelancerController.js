@@ -254,17 +254,24 @@ exports.ViewBox = async (req,res) => {
             if (num >= 1 && num <= 8){
                cardS = cardStrategy[boxArray[i]];
                obj[boxArray[i]] = cardS;
-               data.push(obj);
+               if (boxArray[i] != ""){
+                data.push(obj);
+               }
+               
             }
             else if (num >= 9 && num <= 12){
                 cardE = cardEntSolution[boxArray[i]];
                 obj[boxArray[i]] = cardE;
-                data.push(obj);
+                if (boxArray[i] != ""){
+                    data.push(obj);
+                }
             }
             else{
                 cardL = cardLeadership[boxArray[i]];
                 obj[boxArray[i]] = cardL;
-                data.push(obj)
+                if (boxArray[i] != ""){
+                    data.push(obj);
+                }
                 
             }
         }
@@ -275,5 +282,126 @@ exports.ViewBox = async (req,res) => {
     catch(err){
         console.log(err);
         res.status(404).json({status: '404', message: 'fail', data: err});
+    }
+}
+
+exports.DeleteCard = async (req,res) => {
+    try{
+        req.body.zonetext1 = "";
+        req.body.zonetext2 = "";
+        req.body.zonetext3 = "";
+        req.body.zonetext4 = "";
+        
+        let update;
+
+        if (req.body.card == "card1"){
+            update = {$set :{'strategyAndVision.card1.zonetext1': req.body.zonetext1, 'strategyAndVision.card1.zonetext2': req.body.zonetext2, 'strategyAndVision.card1.zonetext3': req.body.zonetext3, 'strategyAndVision.card1.zonetext4': req.body.zonetext4, 'strategyAndVision.card1.status': 'Not used'}};
+        }
+        else if (req.body.card == "card2"){
+            update = {$set :{'strategyAndVision.card2.zonetext1': req.body.zonetext1, 'strategyAndVision.card2.zonetext2': req.body.zonetext2, 'strategyAndVision.card2.zonetext3': req.body.zonetext3, 'strategyAndVision.card2.zonetext4': req.body.zonetext4, 'strategyAndVision.card2.status': 'Not used'}};
+        }
+        else if (req.body.card == "card3"){
+            update = {$set :{'strategyAndVision.card3.zonetext1': req.body.zonetext1, 'strategyAndVision.card3.zonetext2': req.body.zonetext2, 'strategyAndVision.card3.zonetext3': req.body.zonetext3, 'strategyAndVision.card3.zonetext4': req.body.zonetext4, 'strategyAndVision.card3.status': 'Not used'}};
+        }
+        else if (req.body.card == "card4"){
+            update = {$set :{'strategyAndVision.card4.zonetext1': req.body.zonetext1, 'strategyAndVision.card4.zonetext2': req.body.zonetext2, 'strategyAndVision.card4.zonetext3': req.body.zonetext3, 'strategyAndVision.card4.zonetext4': req.body.zonetext4, 'strategyAndVision.card4.status': 'Not used'}};
+        }
+        else if (req.body.card == "card5"){
+            update = {$set :{'strategyAndVision.card5.zonetext1': req.body.zonetext1, 'strategyAndVision.card5.zonetext2': req.body.zonetext2, 'strategyAndVision.card5.zonetext3': req.body.zonetext3, 'strategyAndVision.card5.zonetext4': req.body.zonetext4, 'strategyAndVision.card5.status': 'Not used'}};
+        }
+        else if (req.body.card == "card6"){
+            update = {$set :{'strategyAndVision.card6.zonetext1': req.body.zonetext1, 'strategyAndVision.card6.zonetext2': req.body.zonetext2, 'strategyAndVision.card6.zonetext3': req.body.zonetext3, 'strategyAndVision.card6.zonetext4': req.body.zonetext4, 'strategyAndVision.card6.status': 'Not used'}};
+        }
+        else if (req.body.card == "card7"){
+            update = {$set :{'strategyAndVision.card7.zonetext1': req.body.zonetext1, 'strategyAndVision.card7.zonetext2': req.body.zonetext2, 'strategyAndVision.card7.zonetext3': req.body.zonetext3, 'strategyAndVision.card7.zonetext4': req.body.zonetext4, 'strategyAndVision.card7.status': 'Not used'}};
+        }
+        else if (req.body.card == "card8"){
+            update = {$set :{'strategyAndVision.card8.zonetext1': req.body.zonetext1, 'strategyAndVision.card8.zonetext2': req.body.zonetext2, 'strategyAndVision.card8.zonetext3': req.body.zonetext3, 'strategyAndVision.card8.zonetext4': req.body.zonetext4, 'strategyAndVision.card8.status': 'Not used'}};
+        }
+
+        else if (req.body.card == "card9"){
+            update = {$set :{'entSolutionPlaybook.card9.zonetext1': req.body.zonetext1, 'entSolutionPlaybook.card9.zonetext2': req.body.zonetext2, 'entSolutionPlaybook.card9.zonetext3': req.body.zonetext3, 'entSolutionPlaybook.card9.zonetext4': req.body.zonetext4, 'entSolutionPlaybook.card9.status': 'Not used'}};
+        }
+        else if (req.body.card == "card10"){
+            update = {$set :{'entSolutionPlaybook.card10.zonetext1': req.body.zonetext1, 'entSolutionPlaybook.card10.zonetext2': req.body.zonetext2, 'entSolutionPlaybook.card10.zonetext3': req.body.zonetext3, 'entSolutionPlaybook.card10.zonetext4': req.body.zonetext4, 'entSolutionPlaybook.card10.status': 'Not used'}};
+        }
+        else if (req.body.card == "card11"){
+            update = {$set :{'entSolutionPlaybook.card11.zonetext1': req.body.zonetext1, 'entSolutionPlaybook.card11.zonetext2': req.body.zonetext2, 'entSolutionPlaybook.card11.zonetext3': req.body.zonetext3, 'entSolutionPlaybook.card11.zonetext4': req.body.zonetext4, 'entSolutionPlaybook.card11.status': 'Not used'}};
+        }
+        else if (req.body.card == "card12"){
+            update = {$set :{'entSolutionPlaybook.card12.zonetext1': req.body.zonetext1, 'entSolutionPlaybook.card12.zonetext2': req.body.zonetext2, 'entSolutionPlaybook.card12.zonetext3': req.body.zonetext3, 'entSolutionPlaybook.card12.zonetext4': req.body.zonetext4, 'strategyAndVision.card12.status': 'Not used'}};
+        }
+        else if (req.body.card == "card13"){
+            update = {$set :{'leadershipAndSocialization.card13.zonetext1': req.body.zonetext1, 'leadershipAndSocialization.card13.zonetext2': req.body.zonetext2, 'leadershipAndSocialization.card13.zonetext3': req.body.zonetext3, 'leadershipAndSocialization.card13.zonetext4': req.body.zonetext4, 'leadershipAndSocialization.card13.status': 'Not used'}};
+        }
+        else if (req.body.card == "card14"){
+            update = {$set :{'leadershipAndSocialization.card14.zonetext1': req.body.zonetext1, 'leadershipAndSocialization.card14.zonetext2': req.body.zonetext2, 'leadershipAndSocialization.card14.zonetext3': req.body.zonetext3, 'leadershipAndSocialization.card14.zonetext4': req.body.zonetext4, 'leadershipAndSocialization.card14.status': 'Not used'}};
+        }
+        else if (req.body.card == "card15"){
+            update = {$set :{'leadershipAndSocialization.card15.zonetext1': req.body.zonetext1, 'leadershipAndSocialization.card15.zonetext2': req.body.zonetext2, 'leadershipAndSocialization.card15.zonetext3': req.body.zonetext3, 'leadershipAndSocialization.card15.zonetext4': req.body.zonetext4, 'leadershipAndSocialization.card15.status': 'Not used'}};
+        }
+        else if (req.body.card == "card16"){
+            update = {$set :{'leadershipAndSocialization.card16.zonetext1': req.body.zonetext1, 'leadershipAndSocialization.card16.zonetext2': req.body.zonetext2, 'leadershipAndSocialization.card16.zonetext3': req.body.zonetext3, 'leadershipAndSocialization.card16.zonetext4': req.body.zonetext4,
+            'leadershipAndSocialization.card16.status': 'Not used'}};
+        }
+       
+        const filter = {freelancerID: req.body.freelancerID};
+
+        const query = Card.updateOne(filter, update, {new:true, runValidators: true});
+        const editCard = await query;
+
+
+        const filterSecond = {freelancerID: req.body.freelancerID};
+        const updateSecond = {$pull: {cards: req.body.card}};
+        
+        const querySecond = Box.updateOne(filterSecond, updateSecond, {new: true, runValidators: true});
+        const boxUpdate = await querySecond;
+        res.status(200).json({status: '200', message: 'success'})
+
+    }
+    catch(err){
+        console.log(err);
+        res.status(404).json({status: '404', message: 'fail', data: err});
+    }
+}
+
+exports.EditProfile = async (req,res) => {
+    try{
+        let query, updateProfile;
+
+        if (req.body.schoolDegree){
+            query = Freelancer.updateOne({freelancerID: req.body.freelancerID}, {schoolDegree: req.body.schoolDegree}, {new: true, runValidators: true});
+            updateProfile = await query;
+        }
+        if (req.body.enterprisesMissions){
+            query = Freelancer.updateOne({freelancerID: req.body.freelancerID}, {enterprisesMissions: req.body.enterprisesMissions}, {new: true, runValidators: true});
+            updateProfile = await query;
+        }
+        if (req.body.certifications){
+            query = Freelancer.updateOne({freelancerID: req.body.freelancerID}, {certifications: req.body.certifications}, {new: true, runValidators: true});
+            updateProfile = await query;
+        }
+        if (req.body.cv){
+            query = Freelancer.updateOne({freelancerID: req.body.freelancerID}, {cv: req.body.cv}, {new: true, runValidators: true});
+            updateProfile = await query;
+        }
+        if (req.body.linkedin){
+            query = Freelancer.updateOne({freelancerID: req.body.freelancerID}, {linkedin: req.body.linkedin}, {new: true, runValidators: true});
+            updateProfile = await query;
+        }
+        if (req.body.video){
+            query = Freelancer.updateOne({freelancerID: req.body.freelancerID}, {video: req.body.video}, {new: true, runValidators: true});
+            updateProfile = await query;
+        }
+        if (req.body.biography){
+            query = Freelancer.updateOne({freelancerID: req.body.freelancerID}, {biography: req.body.biography}, {new: true, runValidators: true});
+            updateProfile = await query;
+        }
+        
+        res.status(200).json({status: '200', message: 'success'});
+    }
+    catch(err){
+        console.log(err);
+        res.staus(404).json({status: '404', message: 'fail'});
     }
 }

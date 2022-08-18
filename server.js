@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const freelancerRoute = require('./routes/freelancerRoute');
+const clientRoute = require('./routes/clientRoute');
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use((req,res,next) => {
 });
 
 app.use('/freelancer', freelancerRoute);
+app.use('/client', clientRoute);
 
 const port = process.env.PORT;
 app.listen(port, ()=> {
