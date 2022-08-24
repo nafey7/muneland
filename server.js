@@ -8,7 +8,6 @@ const cors = require('cors');
 const freelancerRoute = require('./routes/freelancerRoute');
 const clientRoute = require('./routes/clientRoute');
 const quizRoute = require('./routes/quizRoute');
-const boxRoute = require('./routes/boxRoute');
 
 const app = express();
 
@@ -35,7 +34,6 @@ app.use((req,res,next) => {
 
 app.use('/freelancer', freelancerRoute);
 app.use('/client', clientRoute);
-app.use('/box', boxRoute);
 app.use('/quiz', quizRoute);
 
 const port = process.env.PORT;

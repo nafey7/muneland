@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 
 const Freelancer = require('../models/freelancerModel');
 const Card = require('../models/cardModel');
-const Box = require('../models/boxModel');
 const Quiz = require('../models/quizModel');
 const Order = require('../models/orderModel');
 
@@ -52,9 +51,6 @@ exports.Signup = async (req,res) => {
         });
         const cardsCreation = await querySecond;
 
-        const queryThird = Box.create({
-            freelancerID: signup._id
-        })
 
         res.status(201).json({status: '201', message: 'success', data: signup});
 
@@ -146,8 +142,6 @@ exports.EditCardStrategyAndVision = async (req,res, next) => {
         const query = Card.updateOne({freelancerID:req.body.freelancerID}, update, {new:true, runValidators: true});
         const editCard = await query;
 
-        const queryBox = Box.updateOne({freelancerID: req.body.freelancerID}, {$push: {cards: req.body.card}});
-        const box = await queryBox;
 
         const cardAndCost = {card: req.body.card, cost: req.body.rate}
         const queryCost = Freelancer.updateOne({_id: req.body.freelancerID}, {$push: {cost: cardAndCost}});
@@ -203,9 +197,6 @@ exports.EditCardEntSolutionPlaybook = async (req,res,next) => {
         const query = Card.updateOne({freelancerID:req.body.freelancerID}, update, {new:true, runValidators: true});
         const editCard = await query;
 
-        const queryBox = Box.updateOne({freelancerID: req.body.freelancerID}, {$push: {cards: req.body.card}});
-        const box = await queryBox;
-
         const cardAndCost = {card: req.body.card, cost: req.body.rate}
         const queryCost = Freelancer.updateOne({_id: req.body.freelancerID}, {$push: {cost: cardAndCost}});
         const updatedCost = await queryCost;
@@ -255,9 +246,6 @@ exports.EditCardLeadershipAndSocialization = async (req,res,next) => {
         
         const query = Card.updateOne({freelancerID:req.body.freelancerID}, update, {new:true, runValidators: true});
         const editCard = await query;
-
-        const queryBox = Box.updateOne({freelancerID: req.body.freelancerID}, {$push: {cards: req.body.card}});
-        const box = await queryBox;
 
         const cardAndCost = {card: req.body.card, cost: req.body.rate}
         const queryCost = Freelancer.updateOne({_id: req.body.freelancerID}, {$push: {cost: cardAndCost}});
@@ -389,10 +377,6 @@ exports.DeleteCard = async (req,res, next) => {
 
 
         const filterSecond = {freelancerID: req.body.freelancerID};
-        const updateSecond = {$pull: {cards: req.body.card}};
-        
-        const querySecond = Box.updateOne(filterSecond, updateSecond, {new: true, runValidators: true});
-        const boxUpdate = await querySecond;
 
         const queryRemove = Freelancer.updateOne({_id: req.body.freelancerID}, {$pull : {cost:{card: req.body.card}}});
         const removeCost = await queryRemove;
