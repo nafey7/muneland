@@ -179,3 +179,64 @@ exports.RequestIterationOrder = async (req,res) => {
         res.status(404).json({status: '404', message: 'fail'})
     }
 }
+
+exports.Search = async (req,res) => {
+    try{
+        // leave testimonials for now
+
+        let attribute = {};
+        let filter = [];
+        let filterLocation = []
+        let query, findUser;
+
+        if (req.body.fullName){
+            attribute = {fullName: req.body.fullName};
+            filter.push(attribute);
+        }
+        if (req.body.location){
+            for (let i=0;i<req.body.location.length;i++){
+                filterLocation.push({location: req.body.location[i]});
+            }
+        }
+        if (req.body.industryNetwork){
+            attribute = {industryNetwork: req.body.industryNetwork};
+            filter.push(attribute);
+        }
+        if (req.body.language){
+            attribute = {language: req.body.language};
+            filter.push(attribute);
+        }
+        if (req.body.technology){
+            attribute = {technology: req.body.technology};
+            filter.push(attribute);
+        }
+        if (req.body.experience){
+            attribute = {experience: req.body.experience};
+            filter.push(attribute);
+        }
+        if (req.body.minCost){
+            attribute = {minCost: req.body.minCost};
+            filter.push(attribute);
+        }
+        
+        if (filter.length > 0 && filterLocation.length > 0){
+            query = Freelancer.find().and(filter).or(filterLocation);
+            findUser = await query;
+        }
+        else if (filter.length > 0 && filterLocation.length == 0){
+            query = Freelancer.find().and(filter);
+            findUser = await query;
+        }
+        else if (filter.length == 0 && filterLocation.length > 0){
+            query = Freelancer.find().or(filterLocation);
+            findUser = await query;
+        }
+        
+
+        res.status(200).json({status: '200', message: 'success', data: findUser});
+    }
+    catch(err){
+        console.log(err);
+        res.status(404).json({status: '404', message: 'fail'});
+    }
+}

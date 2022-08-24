@@ -38,4 +38,8 @@ router
 .route('/requestiteration')
 .post(controller.RequestIterationOrder)
 
+router
+.route('/search')
+.post(controller.Search)
+
 module.exports = router;
