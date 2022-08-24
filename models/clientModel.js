@@ -6,26 +6,24 @@ const validator = require('validator');
 const clientSchema = new Schema({
 
     fullName: {
-        type: String,
-        required: [true, 'Name is required']
+        type: String
     },
     nickName: {
-        type: String,
-        required: [true, 'Nickname is required']
+        type: String
     },
     password: {
-        type: String,
-        required: [true, 'Password is required']
+        type: String
     },
     telephoneNumber: {
-        type: String,
-        required: [true, 'Telephone Number is required']
+        type: String
     },
     emailAddress: {
         type: String,
         unique: [true, 'Account with this email is already registered'],
-        required: [true, 'Email Address is required'],
         validate: [validator.isEmail, 'Please enter a valid Email Address']
+    },
+    image: {
+        type: String
     }
     
 },

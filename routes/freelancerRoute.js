@@ -17,32 +17,48 @@ router
 .route('/editprofile')
 .patch(controller.EditProfile)
 
-// POST is to view the BOX
+// FREELANCER VIEW THE CARDS PRESENT IN THE BOX (THE USED ONES)
 router
-.route('/box')
+.route('/viewbox')
 .post(controller.ViewBox)
 
 // Delete Card from the box of the Freelancer
 router
 .route('/deletecard')
-.post(controller.DeleteCard);
+.post(controller.DeleteCard, controller.MinCost);
 
 // POST is to view the Cards present in this Category. PATCH is to add card to the box.
 router
 .route('/card/strategy-and-vision')
 .post(controller.ViewStrategyAndVision)
-.patch(controller.EditCardStrategyAndVision);
+.patch(controller.EditCardStrategyAndVision, controller.MinCost);
 
 // POST is to view the Cards present in this Category. PATCH is to add card to the box.
 router
 .route('/card/ent-solution-playbook')
 .post(controller.ViewEntSolutionPlaybook)
-.patch(controller.EditCardEntSolutionPlaybook);
+.patch(controller.EditCardEntSolutionPlaybook, controller.MinCost);
 
 // POST is to view the Cards present in this Category. PATCH is to add card to the box.
 router
 .route('/card/leadership-and-socialization')
 .post(controller.ViewLeadershipAndSocialization)
-.patch(controller.EditCardLeadershipAndSocialization);
+.patch(controller.EditCardLeadershipAndSocialization, controller.MinCost);
+
+// FREELANCER VIEWS THE LIST OF ORDERS
+router
+.route('/vieworder')
+.post(controller.ViewOrders)
+
+// FREELANCER ACCEPTS THE ORDER FROM CLIENT
+router
+.route('/acceptorder')
+.post(controller.AcceptOrder)
+
+// FREELANCER SUBMITS ORDER. Order status is changed to ready
+router
+.route('/submitorder')
+.post(controller.SubmitOrder)
+
 
 module.exports = router;

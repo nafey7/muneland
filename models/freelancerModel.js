@@ -6,26 +6,24 @@ const validator = require('validator');
 const freelancerSchema = new Schema({
 
     fullName: {
-        type: String,
-        required: [true, 'Name is required']
+        type: String
     },
     password: {
-        type: String,
-        required: [true, 'Password is required']
+        type: String
     },
     telephoneNumber: {
-        type: String,
-        required: [true, 'Telephone Number is required']
+        type: String
     },
     emailAddress: {
         type: String,
         unique: [true, 'Account with this email is already registered'],
-        required: [true, 'Email Address is required'],
         validate: [validator.isEmail, 'Please enter a valid Email Address']
     },
     nickName: {
-        type: String,
-        required: [true, 'Nick Name is required']
+        type: String
+    },
+    image: {
+        type: String
     },
     selfRating: {
         metaverse: {type: String, required: true},
@@ -33,8 +31,7 @@ const freelancerSchema = new Schema({
         nft: {type: String, required: true}
     },
     quizScore: {
-        type: Number,
-        required: [true, 'Quiz Score is required']
+        type: Number
     },
     freelancerRating: {
         type: Number,
@@ -65,6 +62,36 @@ const freelancerSchema = new Schema({
         default: ""
     },
     biography: {
+        type: String,
+        default: ""
+    },
+    cost : {
+        type: Array,
+        "default" : []
+    },
+    minCost : {
+        type: Number,
+        default: 0
+    },
+    location : {
+        type: String
+    },
+    industryNetwork : {
+        type: String
+    },
+    language : {
+        type: String
+    },
+    testimonial : {
+        type: String
+    },
+    technology : {
+        type: String
+    },
+    experience : {
+        type: String
+    },
+    dateInfoUpdate: {
         type: String,
         default: ""
     }
