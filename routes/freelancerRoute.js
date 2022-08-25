@@ -38,21 +38,6 @@ router
 .route('/deletecard')
 .post(controller.DeleteCard, controller.MinCost);
 
-// POST is to view the Cards present in this Category.
-router
-.route('/card/strategy-and-vision')
-.post(controller.ViewStrategyAndVision)
-
-// POST is to view the Cards present in this Category.
-router
-.route('/card/ent-solution-playbook')
-.post(controller.ViewEntSolutionPlaybook)
-
-// POST is to view the Cards present in this Category.
-router
-.route('/card/leadership-and-socialization')
-.post(controller.ViewLeadershipAndSocialization)
-
 // FREELANCER VIEWS THE LIST OF ORDERS
 router
 .route('/vieworder')
@@ -67,6 +52,11 @@ router
 router
 .route('/submitorder')
 .post(controller.SubmitOrder)
+
+// FREELANCER SUBMITS THE REVIEW
+router
+.route('/submitreview')
+.post(controller.SubmitReview)
 
 
 module.exports = router;

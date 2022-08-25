@@ -14,6 +14,10 @@ const orderSchema = new Schema({
     freelancerImage: {
         type: String
     },
+    freelancerReviewSubmission: {
+        type: Boolean,
+        default: false
+    },
     clientID: {
         type: String
     },
@@ -22,6 +26,10 @@ const orderSchema = new Schema({
     },
     clientImage: {
         type: String
+    },
+    clientReviewSubmission: {
+        type: Boolean,
+        default: false
     },
     orderDetails: {
         type: Schema.Types.Mixed

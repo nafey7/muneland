@@ -30,9 +30,6 @@ const freelancerSchema = new Schema({
         blockchain: {type: String, required: true},
         nft: {type: String, required: true}
     },
-    quizScore: {
-        type: Number
-    },
     freelancerRating: {
         type: Number,
         default: 0
@@ -82,9 +79,6 @@ const freelancerSchema = new Schema({
     language : {
         type: String
     },
-    testimonial : {
-        type: String
-    },
     technology : {
         type: String
     },
@@ -94,6 +88,10 @@ const freelancerSchema = new Schema({
     dateInfoUpdate: {
         type: String,
         default: ""
+    },
+    reviews: {
+        type: Array,
+        "default" : []
     }
     
 },

@@ -5,18 +5,23 @@ const Freelancer = require('../models/freelancerModel');
 const Card = require('../models/cardModel');
 const Quiz = require('../models/quizModel');
 const Order = require('../models/orderModel');
+const Client = require('../models/clientModel');
 
 exports.Signup = async (req,res) => {
     try{
-        // Account will be made only if freelancer scores above 50%
+        // This part handles the quiz score and let proceed depending on the score of quiz.
         let answersArray = [];
-        for(let i=0;i<10;i++){
+        let total = 10;
+        
+        // sample correct answers generated in array form
+        for(let i=0;i<total;i++){
             answersArray.push("Snow Crash");
         }
         
         let correct = 0;
 
-        for (let j=0;j<10;j++){
+        // comparing freelancer's answers with correct answers
+        for (let j=0;j<total;j++){
             if (answersArray[j] == req.body.answers[j]){
                 correct++;
             }
@@ -24,7 +29,8 @@ exports.Signup = async (req,res) => {
 
         console.log(`quiz score is ${correct} out of 10`);
 
-        if (correct <5){
+        // Account will be made only if freelancer scores above 50%
+        if (correct <(total/2)){
             res.status(200).json({status: '200', message: 'You have scored below an average. Try again'});
             return;
         }
@@ -36,7 +42,6 @@ exports.Signup = async (req,res) => {
             emailAddress: req.body.emailAddress,
             nickName: req.body.nickName,
             selfRating: req.body.selfRating,
-            quizScore: req.body.quizScore,
             location: req.body.location,
             industryNetwork: req.body.industryNetwork,
             language: req.body.language,
@@ -271,6 +276,52 @@ exports.SubmitOrder = async (req,res) => {
         res.status(404).json({status: '404', message: 'fail'});
     }
 }
+
+
+exports.SubmitReview = async (req,res) => {
+    try{
+        let finalObject = {};
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        // handling date
+        let dateArray = req.body.timeApi.split('T')[0].split('-');
+        let month = parseInt(dateArray[1]);
+        month = monthNames[month-1];
+
+        let date = month + " " + dateArray[2] + " " + dateArray[0];
+        
+        const query = Order.findOne({_id: req.body.orderID});
+        const findOrder = await query;
+
+
+        if (findOrder.status != "Complete" || findOrder.freelancerReviewSubmission == true){
+            throw new Error('You cannot submit review at this point');
+        }
+
+        finalObject.freelancerID = findOrder.freelancerID;
+        finalObject.freelancerName = findOrder.freelancerName;
+        finalObject.freelancerImage = findOrder.freelancerImage;
+        finalObject.review = req.body.review;
+        finalObject.rating = req.body.rating;
+        finalObject.date = date;
+
+        const querySecond = Client.updateOne({_id: findOrder.clientID},{$push: {reviews: finalObject}}, {new: true, runValidators: true});
+        const reviewSubmitted = await querySecond;
+
+        const queryThird = Order.updateOne({_id: req.body.orderID}, {freelancerReviewSubmission: true}, {new: true, runValidators: true});
+        const freelancerReviewStatus = await queryThird;
+
+        // Clients's rating has to be updated yet
+
+        res.status(200).json({status: '200', message: 'success'});
+
+    }
+    catch(err){
+        console.log(err);
+        res.status(404).json({status: '404', message: 'fail'});
+    }
+}
+
 
 exports.ViewCards = async (req,res) => {
     try{

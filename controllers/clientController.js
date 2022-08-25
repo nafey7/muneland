@@ -240,3 +240,48 @@ exports.Search = async (req,res) => {
         res.status(404).json({status: '404', message: 'fail'});
     }
 }
+
+exports.SubmitReview = async (req,res) => {
+    try{
+        let finalObject = {};
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        // handling date
+        let dateArray = req.body.timeApi.split('T')[0].split('-');
+        let month = parseInt(dateArray[1]);
+        month = monthNames[month-1];
+
+        let date = month + " " + dateArray[2] + " " + dateArray[0];
+
+
+        
+        const query = Order.findOne({_id: req.body.orderID});
+        const findOrder = await query;
+
+        if (findOrder.status != "Complete" || findOrder.clientReviewSubmission == true){
+            throw new Error('You cannot submit review at this point');
+        }
+
+        finalObject.clientID = findOrder.clientID;
+        finalObject.clientName = findOrder.clientName;
+        finalObject.clientImage = findOrder.clientImage;
+        finalObject.review = req.body.review;
+        finalObject.rating = req.body.rating;
+        finalObject.date = date;
+
+        const querySecond = Freelancer.updateOne({_id: findOrder.freelancerID},{$push: {reviews: finalObject}}, {new: true, runValidators: true});
+        const reviewSubmitted = await querySecond;
+
+        const queryThird = Order.updateOne({_id: req.body.orderID}, {clientReviewSubmission: true}, {new: true, runValidators: true});
+        const clientReviewStatus = await queryThird;
+
+        // Freelancer's rating hs to be calculated yet
+
+        res.status(200).json({status: '200', message: 'success'});
+
+    }
+    catch(err){
+        console.log(err);
+        res.status(404).json({status: '404', message: 'fail'});
+    }
+}

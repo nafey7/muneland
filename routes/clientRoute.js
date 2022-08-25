@@ -42,4 +42,8 @@ router
 .route('/search')
 .post(controller.Search)
 
+router
+.route('/submitreview')
+.post(controller.SubmitReview)
+
 module.exports = router;

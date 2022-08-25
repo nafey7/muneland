@@ -24,6 +24,10 @@ const clientSchema = new Schema({
     },
     image: {
         type: String
+    },
+    reviews: {
+        type: Array,
+        "default" : []
     }
     
 },
