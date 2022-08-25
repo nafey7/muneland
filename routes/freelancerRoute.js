@@ -22,28 +22,36 @@ router
 .route('/viewbox')
 .post(controller.ViewBox)
 
+
+// View Cards of the Freelancer
+router
+.route('/viewcards')
+.post(controller.ViewCards)
+
+// Add Card to the box of Freelancer
+router
+.route('/addcard')
+.patch(controller.AddCardToBox, controller.MinCost);
+
 // Delete Card from the box of the Freelancer
 router
 .route('/deletecard')
 .post(controller.DeleteCard, controller.MinCost);
 
-// POST is to view the Cards present in this Category. PATCH is to add card to the box.
+// POST is to view the Cards present in this Category.
 router
 .route('/card/strategy-and-vision')
 .post(controller.ViewStrategyAndVision)
-.patch(controller.EditCardStrategyAndVision, controller.MinCost);
 
-// POST is to view the Cards present in this Category. PATCH is to add card to the box.
+// POST is to view the Cards present in this Category.
 router
 .route('/card/ent-solution-playbook')
 .post(controller.ViewEntSolutionPlaybook)
-.patch(controller.EditCardEntSolutionPlaybook, controller.MinCost);
 
-// POST is to view the Cards present in this Category. PATCH is to add card to the box.
+// POST is to view the Cards present in this Category.
 router
 .route('/card/leadership-and-socialization')
 .post(controller.ViewLeadershipAndSocialization)
-.patch(controller.EditCardLeadershipAndSocialization, controller.MinCost);
 
 // FREELANCER VIEWS THE LIST OF ORDERS
 router
