@@ -305,13 +305,39 @@ exports.SubmitReview = async (req,res) => {
         finalObject.rating = req.body.rating;
         finalObject.date = date;
 
-        const querySecond = Client.updateOne({_id: findOrder.clientID},{$push: {reviews: finalObject}}, {new: true, runValidators: true});
+        const querySecond = Client.updateOne({_id: findOrder.clientID},{$push: {reviews: finalObject, ratingArray: req.body.rating}}, {new: true, runValidators: true});
         const reviewSubmitted = await querySecond;
 
         const queryThird = Order.updateOne({_id: req.body.orderID}, {freelancerReviewSubmission: true}, {new: true, runValidators: true});
         const freelancerReviewStatus = await queryThird;
 
-        // Clients's rating has to be updated yet
+
+
+        const queryFourth = Client.findOne({_id: findOrder.clientID}).select('ratingArray');
+        const findClient = await queryFourth;
+
+        let sum = 0;
+        let ratingArray = findClient.ratingArray;
+        let ratingNum;
+        
+        for (let i=0;i<ratingArray.length;i++){
+            sum = sum + ratingArray[i];
+        }
+        
+        ratingNum = (sum/ratingArray.length);
+        ratingNum = Math.round((ratingNum + Number.EPSILON) * 10) / 10;
+
+        let ratingString = ratingNum.toString();
+        ratingString = ratingString + "/10";
+        console.log('Rating is', ratingString, 'type is', typeof(ratingString));
+
+
+        const queryFifth = Client.updateOne({_id: findOrder.clientID}, {testimonial: ratingString}, {new: true, runValidators: true});
+        const updateTestimonial = await queryFifth;
+
+
+
+
 
         res.status(200).json({status: '200', message: 'success'});
 

@@ -28,6 +28,13 @@ const clientSchema = new Schema({
     reviews: {
         type: Array,
         "default" : []
+    },
+    ratingArray: {
+        type: Array,
+        "default" : []
+    },
+    testimonial : {
+        type: String
     }
     
 },

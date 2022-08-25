@@ -30,10 +30,6 @@ const freelancerSchema = new Schema({
         blockchain: {type: String, required: true},
         nft: {type: String, required: true}
     },
-    freelancerRating: {
-        type: Number,
-        default: 0
-    },
     schoolDegree: {
         type: String,
         default: ""
@@ -92,6 +88,13 @@ const freelancerSchema = new Schema({
     reviews: {
         type: Array,
         "default" : []
+    },
+    ratingArray: {
+        type: Array,
+        "default" : []
+    },
+    testimonial : {
+        type: String
     }
     
 },
