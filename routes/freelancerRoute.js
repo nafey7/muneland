@@ -1,7 +1,9 @@
 const express = require('express');
 const controller = require('../controllers/freelancerController');
+const protectController = require('../controllers/protectController');
 
 const router = express.Router();
+
 
 // Get List of Events & Add Event
 router
@@ -15,48 +17,48 @@ router
 // Edit Profile of the Freelancer
 router
 .route('/editprofile')
-.patch(controller.EditProfile)
+.patch(protectController.ProtectFreelancer, controller.EditProfile)
 
 // FREELANCER VIEW THE CARDS PRESENT IN THE BOX (THE USED ONES)
 router
 .route('/viewbox')
-.post(controller.ViewBox)
+.post(protectController.ProtectFreelancer, controller.ViewBox)
 
 
 // View Cards of the Freelancer
 router
 .route('/viewcards')
-.post(controller.ViewCards)
+.post(protectController.ProtectFreelancer, controller.ViewCards)
 
 // Add Card to the box of Freelancer
 router
 .route('/addcard')
-.patch(controller.AddCardToBox, controller.MinCost);
+.patch(protectController.ProtectFreelancer, controller.AddCardToBox, controller.MinCost);
 
 // Delete Card from the box of the Freelancer
 router
 .route('/deletecard')
-.post(controller.DeleteCard, controller.MinCost);
+.post(protectController.ProtectFreelancer, controller.DeleteCard, controller.MinCost);
 
 // FREELANCER VIEWS THE LIST OF ORDERS
 router
 .route('/vieworder')
-.post(controller.ViewOrders)
+.post(protectController.ProtectFreelancer, controller.ViewOrders)
 
 // FREELANCER ACCEPTS THE ORDER FROM CLIENT
 router
 .route('/acceptorder')
-.post(controller.AcceptOrder)
+.post(protectController.ProtectFreelancer, controller.AcceptOrder)
 
 // FREELANCER SUBMITS ORDER. Order status is changed to ready
 router
 .route('/submitorder')
-.post(controller.SubmitOrder)
+.post(protectController.ProtectFreelancer, controller.SubmitOrder)
 
 // FREELANCER SUBMITS THE REVIEW
 router
 .route('/submitreview')
-.post(controller.SubmitReview)
+.post(protectController.ProtectFreelancer, controller.SubmitReview)
 
 
 module.exports = router;

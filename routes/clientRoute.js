@@ -1,7 +1,11 @@
 const express = require('express');
 const controller = require('../controllers/clientController');
+const protectController = require('../controllers/protectController');
 
 const router = express.Router();
+
+//protection:
+// router.route('/protect').post(protectController.ProtectClient);
 
 // CLIENT SIGNS UP ON THE WEB APPLICATION
 router
@@ -16,34 +20,34 @@ router
 // OPEN PROFILE OF FREELANCER
 router
 .route('/viewfreelancer')
-.post(controller.ViewFreelancerProfile)
+.post(protectController.ProtectClient, controller.ViewFreelancerProfile)
 
 //CLIENT PLACES AN ORDER (CLIENT BUYS CARD OR SPECIAL CARD)
 router
 .route('/placeorder')
-.post(controller.PlaceOrder)
+.post(protectController.ProtectClient, controller.PlaceOrder)
 
 // CLIENT VIEWS THE LIST OF THE ORDERS
 router
 .route('/vieworder')
-.post(controller.ViewOrders)
+.post(protectController.ProtectClient, controller.ViewOrders)
 
 // CLIENT ACCEPTS THE SUBMISSION OF WORK BY FREELANCER
 router
 .route('/acceptsubmission')
-.post(controller.AcceptSubmissionOrder)
+.post(protectController.ProtectClient, controller.AcceptSubmissionOrder)
 
 // CLIENT REQUESTS ITERATION ON WORK DONE BY FREELANCER
 router
 .route('/requestiteration')
-.post(controller.RequestIterationOrder)
+.post(protectController.ProtectClient, controller.RequestIterationOrder)
 
 router
 .route('/search')
-.post(controller.Search)
+.post(protectController.ProtectClient, controller.Search)
 
 router
 .route('/submitreview')
-.post(controller.SubmitReview)
+.post(protectController.ProtectClient, controller.SubmitReview)
 
 module.exports = router;

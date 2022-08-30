@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 const Client = require ('../models/clientModel');
 const Freelancer = require('../models/freelancerModel');
 const Card = require('../models/cardModel');
@@ -16,11 +18,13 @@ exports.Signup = async (req,res) => {
         });
         const clientSignup = await query;
 
-        const querySecond = Freelancer.find().select('-selfRating -cost -createdAt -updatedAt -__v -password -quizScore -nickName -telephoneNumber -emailAddress');
+        const token = jwt.sign({id: clientSignup._id}, 'muneland-secret');
+
+        const querySecond = Freelancer.find().select('-selfRating -cost -createdAt -updatedAt -__v -password');
         const listFreelancers = await querySecond;
 
         const finalData = {client: clientSignup, freelancersList: listFreelancers};
-        res.status(201).json({status: '201', message: 'success', data: finalData});    
+        res.status(201).json({status: '201', message: 'success', token: token, data: finalData});    
     }
     catch(err){
         console.log(err);
@@ -37,12 +41,14 @@ exports.Login = async (req,res) => {
             throw new Error('Enter a correct password')
         }
 
-        const querySecond = Freelancer.find().select('-selfRating -cost -createdAt -updatedAt -__v -password -quizScore -nickName -telephoneNumber -emailAddress');
+        const token = jwt.sign({id: findClient._id}, 'muneland-secret');
+
+        const querySecond = Freelancer.find().select('-selfRating -cost -createdAt -updatedAt -__v -password');
         const listFreelancers = await querySecond;
 
         const finalData = {client: findClient, freelancersList: listFreelancers};
 
-        res.status(200).json({status: '200', message: 'success', data: finalData});
+        res.status(200).json({status: '200', message: 'success', token: token, data: finalData});
 
     }
     catch(err){
@@ -100,8 +106,10 @@ exports.ViewFreelancerProfile = async (req,res) => {
             }
         }
 
+        const querySecond = Freelancer.findOne({_id: req.body.freelancerID}).select('-createdAt -updatedAt -__v -ratingArray -cost -selfRating -password');
+        const infoFreelancer = await querySecond;
 
-        res.status(200).json({status: '200', message: 'success', data: finalCards});
+        res.status(200).json({status: '200', message: 'success', data: {freelancer: infoFreelancer,cards: finalCards}});
     }
     catch(err){
         console.log(err);
@@ -155,8 +163,7 @@ exports.ViewOrders = async (req,res) => {
 
 exports.AcceptSubmissionOrder = async (req,res) => {
     try{
-        // order status is marked complete
-        const query = Order.updateOne({_id: req.body.orderID}, {status: "Complete"}, {new: true, runValidators: true});
+        const query = Order.updateOne({_id: req.body.orderID, clientID: req.body.clientID}, {status: "Complete"}, {new: true, runValidators: true});
         const acceptSubmission = await query;
 
         res.status(200).json({status: '200', message: 'success'})
@@ -169,7 +176,7 @@ exports.AcceptSubmissionOrder = async (req,res) => {
 
 exports.RequestIterationOrder = async (req,res) => {
     try{
-        const query = Order.updateOne({_id: req.body.orderID}, {status: "In Progress"}, {new: true, runValidators: true});
+        const query = Order.updateOne({_id: req.body.orderID, clientID: req.body.clientID}, {status: "In Progress"}, {new: true, runValidators: true});
         const requestIteration = await query;
 
         res.status(200).json({status: '200', message: 'success'})
@@ -218,17 +225,17 @@ exports.Search = async (req,res) => {
             attribute = {minCost: req.body.minCost};
             filter.push(attribute);
         }
-        
+        // .select('-password -selfRating -cost -createdAt -updatedAt -__v')
         if (filter.length > 0 && filterLocation.length > 0){
-            query = Freelancer.find().and(filter).or(filterLocation);
+            query = Freelancer.find().and(filter).or(filterLocation).select('-password -selfRating -cost -createdAt -updatedAt -__v -ratingArray');
             findUser = await query;
         }
         else if (filter.length > 0 && filterLocation.length == 0){
-            query = Freelancer.find().and(filter);
+            query = Freelancer.find().and(filter).select('-password -selfRating -cost -createdAt -updatedAt -__v -ratingArray');
             findUser = await query;
         }
         else if (filter.length == 0 && filterLocation.length > 0){
-            query = Freelancer.find().or(filterLocation);
+            query = Freelancer.find().or(filterLocation).select('-password -selfRating -cost -createdAt -updatedAt -__v -ratingArray');
             findUser = await query;
         }
         
@@ -255,7 +262,7 @@ exports.SubmitReview = async (req,res) => {
 
 
         
-        const query = Order.findOne({_id: req.body.orderID});
+        const query = Order.findOne({_id: req.body.orderID, clientID: req.body.clientID});
         const findOrder = await query;
 
         if (findOrder.status != "Complete" || findOrder.clientReviewSubmission == true){

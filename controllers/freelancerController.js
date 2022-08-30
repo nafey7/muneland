@@ -56,8 +56,10 @@ exports.Signup = async (req,res) => {
         });
         const cardsCreation = await querySecond;
 
+        const token = jwt.sign({id: signup._id}, 'muneland-secret');
 
-        res.status(201).json({status: '201', message: 'success', data: signup});
+
+        res.status(201).json({status: '201', message: 'success', token: token, data: signup});
 
     }
     catch(err){
@@ -79,7 +81,9 @@ exports.Login = async (req,res) => {
             throw new Error('Failed to Login');
         }
 
-        res.status(200).json({status: '200', message: 'success', data: login});
+        const token = jwt.sign({id: login._id}, 'muneland-secret');
+
+        res.status(200).json({status: '200', message: 'success', token: token, data: login});
 
     }
     catch(err){
@@ -205,6 +209,10 @@ exports.EditProfile = async (req,res) => {
             query = Freelancer.updateOne({_id: req.body.freelancerID}, {biography: req.body.biography}, {new: true, runValidators: true});
             updateProfile = await query;
         }
+        if (req.body.language){
+            query = Freelancer.updateOne({_id: req.body.freelancerID}, {language: req.body.language}, {new: true, runValidators: true});
+            updateProfile = await query;
+        }
 
 
         
@@ -233,7 +241,7 @@ exports.AcceptOrder = async (req,res) => {
     try{
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         
-        const query = Order.findOne({_id: req.body.orderID});
+        const query = Order.findOne({_id: req.body.orderID, freelancerID: req.body.freelancerID});
         const findOrder = await query
 
         let days = findOrder.orderDetails.days
@@ -266,7 +274,7 @@ exports.AcceptOrder = async (req,res) => {
 
 exports.SubmitOrder = async (req,res) => {
     try{
-        const query = Order.updateOne({_id: req.body.orderID}, {status: 'Ready'}, {new: true, runValidators: true});
+        const query = Order.updateOne({_id: req.body.orderID, freelancerID: req.body.freelancerID}, {status: 'Ready'}, {new: true, runValidators: true});
         const submitOrder = await query;
 
         res.status(200).json({status: '200', message: 'success'});
@@ -290,7 +298,7 @@ exports.SubmitReview = async (req,res) => {
 
         let date = month + " " + dateArray[2] + " " + dateArray[0];
         
-        const query = Order.findOne({_id: req.body.orderID});
+        const query = Order.findOne({_id: req.body.orderID, freelancerID: req.body.freelancerID});
         const findOrder = await query;
 
 
@@ -493,7 +501,7 @@ exports.DeleteCard = async (req,res, next) => {
             update = {$set :{'entSolutionPlaybook.card11.zonetext1': req.body.zonetext1, 'entSolutionPlaybook.card11.zonetext2': req.body.zonetext2, 'entSolutionPlaybook.card11.zonetext3': req.body.zonetext3, 'entSolutionPlaybook.card11.zonetext4': req.body.zonetext4, 'entSolutionPlaybook.card11.status': 'Not used'}};
         }
         else if (req.body.card == "card12"){
-            update = {$set :{'entSolutionPlaybook.card12.zonetext1': req.body.zonetext1, 'entSolutionPlaybook.card12.zonetext2': req.body.zonetext2, 'entSolutionPlaybook.card12.zonetext3': req.body.zonetext3, 'entSolutionPlaybook.card12.zonetext4': req.body.zonetext4, 'strategyAndVision.card12.status': 'Not used'}};
+            update = {$set :{'entSolutionPlaybook.card12.zonetext1': req.body.zonetext1, 'entSolutionPlaybook.card12.zonetext2': req.body.zonetext2, 'entSolutionPlaybook.card12.zonetext3': req.body.zonetext3, 'entSolutionPlaybook.card12.zonetext4': req.body.zonetext4, 'entSolutionPlaybook.card12.status': 'Not used'}};
         }
         else if (req.body.card == "card13"){
             update = {$set :{'leadershipAndSocialization.card13.zonetext1': req.body.zonetext1, 'leadershipAndSocialization.card13.zonetext2': req.body.zonetext2, 'leadershipAndSocialization.card13.zonetext3': req.body.zonetext3, 'leadershipAndSocialization.card13.zonetext4': req.body.zonetext4, 'leadershipAndSocialization.card13.status': 'Not used'}};
