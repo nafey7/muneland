@@ -1,0 +1,665 @@
+{
+	"info": {
+		"_postman_id": "b6823e13-fd24-4dba-b76f-ddeade094df7",
+		"name": "MUNELAND",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21263830"
+	},
+	"item": [
+		{
+			"name": "FREELANCER",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Test User 5\",\n    \"password\": \"abcd1234\",\n    \"telephoneNumber\": \"03217685989\",\n    \"emailAddress\": \"nafeymoiz5@gmail.com\",\n    \"nickName\": \"teetee\",\n    \"selfRating\": {\"metaverse\":\"55\", \"blockchain\": \"32\", \"nft\": \"93\"},\n    \"answers\": [\"Snow Casrashaasasjhj\",\"Snow Craamsnamsh\",\"Snow Crash\",\"Snowashrash\",\"Sno Craash\",\"Sw Crasah\",\"Snow Crash\",\"Snow Crash\",\"Snow Crash\",\"Snow Crash\"],\n    \"location\" : \"JAPAN\",\n    \"industryNetwork\" : \"meta\",\n    \"language\" : \"Japaenese\",\n    \"technology\" : \"nft\",\n    \"experience\" : \"4\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"emailAddress\": \"nafeymoiz5@gmail.com\",\n    \"password\": \"abcd1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQ5YzVlNGYwZTZhMDRjNGUwMTEyMiIsImlhdCI6MTY2MTgzNjkwN30.VIITsS6cJJtSb0tzVxvLvYcqZxzbRyl5mtdK5AkxqOE\",\n    \"cv\": \"linkedin@tu3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/editprofile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"editprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Card To Box",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQ5YzVlNGYwZTZhMDRjNGUwMTEyMiIsImlhdCI6MTY2MTgzNjkwN30.VIITsS6cJJtSb0tzVxvLvYcqZxzbRyl5mtdK5AkxqOE\",\n    \"card\": \"card8\",\n    \"zonetext1\": \"New zone text 1\",\n    \"zonetext2\": \"New zone text 2\",\n    \"zonetext3\": \"New zone text 3\",\n    \"zonetext4\": \"New zone text 4\",\n    \"rate\": \"15\",\n    \"days\": \"10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/addcard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"addcard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Cards",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQ5YzVlNGYwZTZhMDRjNGUwMTEyMiIsImlhdCI6MTY2MTgzNjkwN30.VIITsS6cJJtSb0tzVxvLvYcqZxzbRyl5mtdK5AkxqOE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/viewcards",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"viewcards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Box",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQ5YzVlNGYwZTZhMDRjNGUwMTEyMiIsImlhdCI6MTY2MTgzNjkwN30.VIITsS6cJJtSb0tzVxvLvYcqZxzbRyl5mtdK5AkxqOE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/viewbox",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"viewbox"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Card From Box",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQ5YzVlNGYwZTZhMDRjNGUwMTEyMiIsImlhdCI6MTY2MTgzNjkwN30.VIITsS6cJJtSb0tzVxvLvYcqZxzbRyl5mtdK5AkxqOE\",\n    \"card\": \"card8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/deletecard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"deletecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Orders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQ5YzVlNGYwZTZhMDRjNGUwMTEyMiIsImlhdCI6MTY2MTgzNjkwN30.VIITsS6cJJtSb0tzVxvLvYcqZxzbRyl5mtdK5AkxqOE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/vieworder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"vieworder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQ5YzVlNGYwZTZhMDRjNGUwMTEyMiIsImlhdCI6MTY2MTgzNjkwN30.VIITsS6cJJtSb0tzVxvLvYcqZxzbRyl5mtdK5AkxqOE\",\n    \"orderID\": \"630da95891f5c0f9efbf15e0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/acceptorder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"acceptorder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQ5YzVlNGYwZTZhMDRjNGUwMTEyMiIsImlhdCI6MTY2MTgzNjkwN30.VIITsS6cJJtSb0tzVxvLvYcqZxzbRyl5mtdK5AkxqOE\",\n    \"orderID\": \"630da95891f5c0f9efbf15e0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/submitorder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"submitorder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Review and Rating Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGQ5YzVlNGYwZTZhMDRjNGUwMTEyMiIsImlhdCI6MTY2MTgzNjkwN30.VIITsS6cJJtSb0tzVxvLvYcqZxzbRyl5mtdK5AkxqOE\",\n    \"orderID\": \"630da95891f5c0f9efbf15e0\",\n    \"review\": \"Quite happy with the client. has been quite friendly and generoussssssss\",\n    \"rating\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/freelancer/submitreview",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"freelancer",
+								"submitreview"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CLIENT",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\":\"Client 2\",\n    \"nickName\":\"C2\",\n    \"password\":\"abcd1234\",\n    \"telephoneNumber\":\"320203859\",\n    \"emailAddress\":\"abc2@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/client/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"emailAddress\":\"abc1@gmail.com\",\n    \"password\":\"abcd1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/client/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Place Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGRhN2JjNzA0ZTUzYzFlYTdhNWMwZCIsImlhdCI6MTY2MTgzOTI5Mn0.ICvv2MKJJyyzu8bfk4H4VlcznR3s3k3AZLsLcyBdEn4\",\n    \"freelancerID\": \"630d9c5e4f0e6a04c4e01122\",\n    \"orderDetails\": {\"name\": \"metaverse Workshop\", \"rate\": \"100\", \"days\": \"4\"}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/client/placeorder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client",
+								"placeorder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Orders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGRhN2JjNzA0ZTUzYzFlYTdhNWMwZCIsImlhdCI6MTY2MTgzOTI5Mn0.ICvv2MKJJyyzu8bfk4H4VlcznR3s3k3AZLsLcyBdEn4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/client/vieworder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client",
+								"vieworder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request Iteration on Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGRhN2JjNzA0ZTUzYzFlYTdhNWMwZCIsImlhdCI6MTY2MTgzOTI5Mn0.ICvv2MKJJyyzu8bfk4H4VlcznR3s3k3AZLsLcyBdEn4\",\n    \"orderID\": \"630da95891f5c0f9efbf15e0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/client/requestiteration",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client",
+								"requestiteration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Submission of Freelancer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGRhN2JjNzA0ZTUzYzFlYTdhNWMwZCIsImlhdCI6MTY2MTgzOTI5Mn0.ICvv2MKJJyyzu8bfk4H4VlcznR3s3k3AZLsLcyBdEn4\",\n    \"orderID\": \"630da95891f5c0f9efbf15e0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/client/acceptsubmission",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client",
+								"acceptsubmission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Freelancer's Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGRhN2JjNzA0ZTUzYzFlYTdhNWMwZCIsImlhdCI6MTY2MTgzOTI5Mn0.ICvv2MKJJyyzu8bfk4H4VlcznR3s3k3AZLsLcyBdEn4\",\n    \"freelancerID\": \"6308f1a09d339c6e4aabc57d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/client/viewfreelancer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client",
+								"viewfreelancer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGRhN2JjNzA0ZTUzYzFlYTdhNWMwZCIsImlhdCI6MTY2MTgzOTI5Mn0.ICvv2MKJJyyzu8bfk4H4VlcznR3s3k3AZLsLcyBdEn4\",\n    \"location\": [\"USA\", \"UK\"],\n    \"language\": \"English\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/client/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Review and Rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGRhN2JjNzA0ZTUzYzFlYTdhNWMwZCIsImlhdCI6MTY2MTgzOTI5Mn0.ICvv2MKJJyyzu8bfk4H4VlcznR3s3k3AZLsLcyBdEn4\",\n    \"orderID\": \"630da95891f5c0f9efbf15e0\",\n    \"review\": \"IIIII am nearly happy with your work\",\n    \"rating\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/client/submitreview",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client",
+								"submitreview"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "QUIZ",
+			"item": [
+				{
+					"name": "Add a question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/quiz/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"quiz",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/quiz/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"quiz",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "heroku deployment proof",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://shrouded-bastion-62064.herokuapp.com/quiz",
+							"protocol": "https",
+							"host": [
+								"shrouded-bastion-62064",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"quiz"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
