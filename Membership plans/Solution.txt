@@ -1,0 +1,36 @@
+{
+    "name":"Solution",
+    "type": "START UP",
+    "cost": "99",
+    "features": ["Capability Assessment & Requirements", "Co-Op & Market Analysis", "Tech., Ecosystem, & V/A Requirements", "Funding Model Process & Governance"],
+    "deliverables": [{"CapabilityAssessmentAndRequirements": [ 
+        {"question": "Perform current state capability assessment", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Gather future state detailed capability requirements", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Identify our capability development strategy (build, buy, borrow)", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"}
+        ]},
+
+    {"CoOpAndMarketAnalysis": [ 
+        {"question": "Understand Market potential and how we will succeed", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Embrace opportunity archetypes and Go to Market roles", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "How to deliver at lower cost to serve", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"}
+        ]},
+
+    {"TechEcosystemAndVARequirements": [ 
+        {"question": "Gather technical requirements", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Assess Digital Technology roadmap and how it connects to Metaverse technical requirements", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Perform technical gap analysis", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Develop future state tech architecture", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Blockchain solution and activation plan", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Critical platforms and partners", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Identify how to work with META and leverage partnership to full advantage (Testing, resources, hardware, hosting, etc.)", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Identify V/A capability requirements", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Build V/A capability short list - excludes due diligence and selecting one target acquisition", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"}
+        ]},
+        
+    {"FundingModelProcessAndGovernance": [ 
+        {"question": "Identify current state funding model and requirements", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Build critical governance stakeholder map", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Identify process to get approval, buy in, investment needed", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
+        {"question": "Build governance model and operating principles for decision making post strategy alignment", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"}
+        ]}]
+}
