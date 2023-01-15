@@ -12,12 +12,20 @@ const membershipRoute = require('./routes/membershipRoute');
 
 const app = express();
 
-// const corsOptions = {
-//     origin: process.env.ORIGIN,
-// }
-// app.use(cors(corsOptions));
+const whitelist = ['http://localhost:3000'];
+const corsOptionsDelegate = function (req, callback) {
+    var corsOptions;
+    if (whitelist.indexOf(req.header('Origin')) !== -1) {
+        corsOptions = {origin: true} // reflect (enable) the requested origin in the CORS response
+    } else {
+        corsOptions = {origin: false} // disable CORS for this request
+    }
+    callback(null, corsOptions) // callback expects two parameters: error and options
+};
 
-mongoose.connect(process.env.dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
+app.use(cors(corsOptionsDelegate));
+
+mongoose.connect(process.env.dbURL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => console.log("Sucessfully connected to Database"))
     .catch((err) => console.log(err));
 
@@ -25,9 +33,9 @@ mongoose.connect(process.env.dbURL, { useNewUrlParser: true, useUnifiedTopology:
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.use((req,res,next) => {
+app.use((req, res, next) => {
     let req_time = new Date().toISOString();
-    console.log('The time of the request:',req_time);
+    console.log('The time of the request:', req_time);
     req.body.timeApi = req_time;
     // console.log(req.headers);
     next();
@@ -38,7 +46,7 @@ app.use('/client', clientRoute);
 app.use('/quiz', quizRoute);
 app.use('/membership', membershipRoute);
 
-const port = process.env.PORT;
-app.listen(port, ()=> {
-    console.log("App is running on port:",port);
+const port = 3001;
+app.listen(port, () => {
+    console.log("App is running on port:", port);
 });
