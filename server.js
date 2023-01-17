@@ -12,7 +12,7 @@ const membershipRoute = require('./routes/membershipRoute');
 
 const app = express();
 
-const whitelist = ['http://localhost:3000'];
+const whitelist = ['http://localhost:3000' , 'https://munland-fe.vercel.app'];
 const corsOptionsDelegate = function (req, callback) {
     var corsOptions;
     if (whitelist.indexOf(req.header('Origin')) !== -1) {
