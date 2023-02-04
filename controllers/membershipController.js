@@ -7,6 +7,8 @@ exports.AddMembershipPlan = async (req,res) => {
             name: req.body.name,
             type: req.body.type,
             cost: req.body.cost,
+            icons: req.body.icons,
+            numberOfQuestions: req.body.numberOfQuestions,
             features: req.body.features,
             deliverables: req.body.deliverables,
         });

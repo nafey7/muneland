@@ -2,8 +2,12 @@
     "name":"Solution",
     "type": "START UP",
     "cost": "99",
+    "numberOfQuestions":["3","3","9","4"],
+    "icons": ["AiFillFilter","AiFillFunnelPlot","AiFillGold","AiFillHourglass"],
     "features": ["Capability Assessment & Requirements", "Co-Op & Market Analysis", "Tech., Ecosystem, & V/A Requirements", "Funding Model Process & Governance"],
-    "deliverables": [{"CapabilityAssessmentAndRequirements": [ 
+    "deliverables": [
+        
+    {"CapabilityAssessmentAndRequirements": [ 
         {"question": "Perform current state capability assessment", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
         {"question": "Gather future state detailed capability requirements", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
         {"question": "Identify our capability development strategy (build, buy, borrow)", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"}

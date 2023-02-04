@@ -16,6 +16,14 @@ const membershipSchema = new Schema({
     cost: {
         type: String
     },
+    icons: {
+        type: Array,
+        default: []
+    },
+    numberOfQuestions: {
+        type: Array,
+        default: []
+    },
     features: {
         type: Array,
         default: []

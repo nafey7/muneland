@@ -2,8 +2,11 @@
     "name":"Leadership",
     "type": "ENTERPRISE",
     "cost": "120",
+    "numberOfQuestions":["2","1","3","2"],
+    "icons": ["AiFillAppstore","AiFillBulb","AiFillCode","AiFillFileAdd"],
     "features": ["Enterprise Stakeholder Socialization Strategy", "Board Meeting Presentation", "Internal Comms. Plan & Execution", "Partnership Term Sheet"],
-    "deliverables": [{"EnterpriseStakeholderSocializationStrategy": [ 
+    "deliverables": [
+        {"EnterpriseStakeholderSocializationStrategy": [ 
         {"question": "Identify critical socialization milestones based on roadmap", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
         {"question": "Identify strategy for ongoing socialization", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"}
         ]},

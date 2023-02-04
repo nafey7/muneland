@@ -2,6 +2,8 @@
     "name":"Strategy & Vision",
     "type": "PERSONAL",
     "cost": "49.99",
+    "numberOfQuestions":["8","9","9","3","7","3","4","7"],
+    "icons": ["BsFillChatSquareDotsFill","BsFillCheckCircleFill","BsFillCloudDownloadFill","BsFillDiagram2Fill","BsFillFileArrowDownFill","BsFillFileEarmarkPostFill","BsFillLightbulbFill","BsFillLayersFill"],
     "features": ["North Star Workshop", "Ongoing Research Pod", "Enterprise Metaverse Strategy", "Metaverse Measurement/KPI Strategy", "Future Experience and Audience Strategy", "GTM Strategy & Assessment", "3/5/10-year Roadmap incl Proof-of-strategy plan", "Metaverse Business Case"],
     "deliverables": [{"NorthStarWorkshop": [ 
         {"question": "Identify a unified Metaverse definition", "outcome": "To set the foundation of our future", "why": "To have a clear vision on what we want to build", "metaverseRole": ["Strat Manager (80%)", "MV Strat Consultant", "Metaverse Strat SM (60%)"], "video": "video.mp4", "tips": "tips"},
