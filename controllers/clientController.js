@@ -4,6 +4,7 @@ const Client = require ('../models/clientModel');
 const Freelancer = require('../models/freelancerModel');
 const Card = require('../models/cardModel');
 const Order = require('../models/orderModel');
+const Membership = require('../models/membershipModel');
 
 exports.Signup = async (req,res) => {
     try{

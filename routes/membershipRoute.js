@@ -1,23 +1,31 @@
 const express = require('express');
 const controller = require('../controllers/membershipController');
+const protectController = require('../controllers/protectController');
 
 const router = express.Router();
 
-// Add question to the quiz with POST and View the quiz with GET
 router
 .route('/')
 .post(controller.AddMembershipPlan);
 
+// VIEW STRATEGY AND VISION PLAN
 router
 .route('/strategyandvision')
-.get(controller.StrategyAndVision);
+.post(protectController.ProtectClient, controller.StrategyAndVision, controller.CheckoutSession);
 
+// VIEW SOLUTION PLAN
 router
 .route('/solution')
-.get(controller.Solution);
+.post(protectController.ProtectClient, controller.Solution, controller.CheckoutSession);
 
+// VIEW LEADERSHIP PLAN
 router
 .route('/leadership')
-.get(controller.Leadership)
+.post(protectController.ProtectClient, controller.Leadership, controller.CheckoutSession);
+
+// PURCHASE THE MEMBERSHIP PLAN
+router
+.route('/purchasemembershipplan')
+.post(protectController.ProtectClient, controller.PurchaseMembershipPlan)
 
 module.exports = router;

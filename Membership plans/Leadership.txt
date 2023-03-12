@@ -3,7 +3,7 @@
     "type": "ENTERPRISE",
     "cost": "120",
     "numberOfQuestions":["2","1","3","2"],
-    "icons": ["AiFillAppstore","AiFillBulb","AiFillCode","AiFillFileAdd"],
+    "icons": ["BsFillChatSquareDotsFill","BsFillCheckCircleFill","BsFillCloudDownloadFill","BsFillDiagram2Fill"],
     "features": ["Enterprise Stakeholder Socialization Strategy", "Board Meeting Presentation", "Internal Comms. Plan & Execution", "Partnership Term Sheet"],
     "deliverables": [
         {"EnterpriseStakeholderSocializationStrategy": [ 

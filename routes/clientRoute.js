@@ -42,10 +42,12 @@ router
 .route('/requestiteration')
 .post(protectController.ProtectClient, controller.RequestIterationOrder)
 
+// SEARCH FREELANCERS WITH FILTERS
 router
 .route('/search')
 .post(protectController.ProtectClient, controller.Search)
 
+// SUBMIT A REVIEW TO THE FREELANCER
 router
 .route('/submitreview')
 .post(protectController.ProtectClient, controller.SubmitReview)

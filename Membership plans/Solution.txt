@@ -3,7 +3,7 @@
     "type": "START UP",
     "cost": "99",
     "numberOfQuestions":["3","3","9","4"],
-    "icons": ["AiFillFilter","AiFillFunnelPlot","AiFillGold","AiFillHourglass"],
+    "icons": ["BsFillFileArrowDownFill","BsFillFileEarmarkPostFill","BsFillLightbulbFill","BsFillLayersFill"],
     "features": ["Capability Assessment & Requirements", "Co-Op & Market Analysis", "Tech., Ecosystem, & V/A Requirements", "Funding Model Process & Governance"],
     "deliverables": [
         

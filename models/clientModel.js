@@ -35,6 +35,10 @@ const clientSchema = new Schema({
     },
     testimonial : {
         type: String
+    },
+    plan : {
+        type: String,
+        default: ''
     }
     
 },
