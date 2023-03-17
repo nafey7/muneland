@@ -5,10 +5,10 @@ const validator = require('validator');
 
 const clientSchema = new Schema({
 
-    fullName: {
+    firstName: {
         type: String
     },
-    nickName: {
+    lastName: {
         type: String
     },
     password: {

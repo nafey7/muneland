@@ -9,8 +9,8 @@ const Membership = require('../models/membershipModel');
 exports.Signup = async (req,res) => {
     try{
         const query = Client.create({
-            fullName: req.body.fullName,
-            nickName: req.body.nickName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             password: req.body.password,
             telephoneNumber: req.body.telephoneNumber,
             emailAddress: req.body.emailAddress,

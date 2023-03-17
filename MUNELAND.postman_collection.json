@@ -340,7 +340,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"fullName\":\"Client 2\",\n    \"nickName\":\"C2\",\n    \"password\":\"abcd1234\",\n    \"telephoneNumber\":\"320203859\",\n    \"emailAddress\":\"abc2@gmail.com\"\n}",
+							"raw": "{\n    \"firstName\":\"Client\",\n    \"lastName\":\"3\",\n    \"password\":\"abcd1234\",\n    \"telephoneNumber\":\"320203859\",\n    \"emailAddress\":\"abc3@gmail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -369,7 +369,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"emailAddress\":\"abc1@gmail.com\",\n    \"password\":\"abcd1234\"\n}",
+							"raw": "{\n    \"emailAddress\":\"abc2@gmail.com\",\n    \"password\":\"abcd1234\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -665,10 +665,48 @@
 			"name": "MEMBERSHIP",
 			"item": [
 				{
+					"name": "Purchase Membership Plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"membershipID\": \"63de5d3fc0e94cdba7984719\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGRiNTYxOGJjNWEyNjg3YzcyZTI0NCIsImlhdCI6MTY3ODYyMDQ1MX0.B7vXW-wIa3yP2tLoL7pWjpueXXSudXA0m-s-HAdXUfE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/membership/purchasemembershipplan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"membership",
+								"purchasemembershipplan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Strategy and Vision",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDhmM2I5OWQzMzljNmU0YWFiYzU5NSIsImlhdCI6MTY3ODYxOTM3Nn0.HXgFLnk0T6D6i_73PRlnsJICwdmTr5cCZVOwNGkTVWo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8000/membership/strategyandvision",
 							"protocol": "http",
@@ -687,8 +725,17 @@
 				{
 					"name": "Solution",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDhmM2I5OWQzMzljNmU0YWFiYzU5NSIsImlhdCI6MTY3ODYxOTM3Nn0.HXgFLnk0T6D6i_73PRlnsJICwdmTr5cCZVOwNGkTVWo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8000/membership/solution",
 							"protocol": "http",
@@ -705,10 +752,19 @@
 					"response": []
 				},
 				{
-					"name": "Strategy and Vision Copy",
+					"name": "Leadership",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDhmM2I5OWQzMzljNmU0YWFiYzU5NSIsImlhdCI6MTY3ODYxOTM3Nn0.HXgFLnk0T6D6i_73PRlnsJICwdmTr5cCZVOwNGkTVWo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8000/membership/leadership",
 							"protocol": "http",
@@ -731,7 +787,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"Solution\",\n    \"type\": \"START UP\",\n    \"cost\": \"99\",\n    \"features\": [\"Capability Assessment & Requirements\", \"Co-Op & Market Analysis\", \"Tech., Ecosystem, & V/A Requirements\", \"Funding Model Process & Governance\"],\n    \"deliverables\": [{\"CapabilityAssessmentAndRequirements\": [ \n        {\"question\": \"Perform current state capability assessment\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Gather future state detailed capability requirements\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Identify our capability development strategy (build, buy, borrow)\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"}\n        ]},\n\n    {\"CoOpAndMarketAnalysis\": [ \n        {\"question\": \"Understand Market potential and how we will succeed\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Embrace opportunity archetypes and Go to Market roles\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"How to deliver at lower cost to serve\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"}\n        ]},\n\n    {\"TechEcosystemAndVARequirements\": [ \n        {\"question\": \"Gather technical requirements\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Assess Digital Technology roadmap and how it connects to Metaverse technical requirements\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Perform technical gap analysis\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Develop future state tech architecture\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Blockchain solution and activation plan\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Critical platforms and partners\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Identify how to work with META and leverage partnership to full advantage (Testing, resources, hardware, hosting, etc.)\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Identify V/A capability requirements\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Build V/A capability short list - excludes due diligence and selecting one target acquisition\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"}\n        ]},\n        \n    {\"FundingModelProcessAndGovernance\": [ \n        {\"question\": \"Identify current state funding model and requirements\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Build critical governance stakeholder map\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Identify process to get approval, buy in, investment needed\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Build governance model and operating principles for decision making post strategy alignment\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"}\n        ]}]\n}",
+							"raw": "{\n    \"name\":\"Leadership\",\n    \"type\": \"ENTERPRISE\",\n    \"cost\": \"120\",\n    \"numberOfQuestions\":[\"2\",\"1\",\"3\",\"2\"],\n    \"icons\": [\"AiFillAppstore\",\"AiFillBulb\",\"AiFillCode\",\"AiFillFileAdd\"],\n    \"features\": [\"Enterprise Stakeholder Socialization Strategy\", \"Board Meeting Presentation\", \"Internal Comms. Plan & Execution\", \"Partnership Term Sheet\"],\n    \"deliverables\": [\n        {\"EnterpriseStakeholderSocializationStrategy\": [ \n        {\"question\": \"Identify critical socialization milestones based on roadmap\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Identify strategy for ongoing socialization\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"}\n        ]},\n\n    {\"BoardMeetingPresentation\": [ \n        {\"question\": \"Build start up deck for key pitch (10 slides + ~100 slides of strategy)\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"}\n        ]},\n\n\n    {\"InternalCommsPlanAndExecution\": [ \n        {\"question\": \"Identify comms plan and cadence for ongoing updates and progress\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Educate and galvanize the organization to the c-suite level to enable potential and alignment on direction\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Get the agreement on strategy and investment for first 5 years\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"}\n        ]},\n\n        \n    {\"PartnershipTermSheet\": [ \n        {\"question\": \"Build multi-year partnership scope based on strategy, roadmap, unanswered questions, and capability & tech requirements\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"},\n        {\"question\": \"Develop supporting deal structure & SOW\", \"outcome\": \"To set the foundation of our future\", \"why\": \"To have a clear vision on what we want to build\", \"metaverseRole\": [\"Strat Manager (80%)\", \"MV Strat Consultant\", \"Metaverse Strat SM (60%)\"], \"video\": \"video.mp4\", \"tips\": \"tips\"}\n        ]}]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
