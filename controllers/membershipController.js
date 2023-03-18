@@ -127,7 +127,8 @@ exports.CheckoutSession = async (req,res) => {
                 quantity: 1
             }],
             metadata: {
-                "membershipID": membershipID
+                "membershipID": membershipID,
+                "clientID": req.body.clientID
             }
         })
 
@@ -163,9 +164,17 @@ exports.StripeWebhook =  async (req, res) => {
     // Handle the event
     if (event.type === 'checkout.session.completed') {
       // Payment successful, call the success function
+
+      const filter = {_id: event.data.object.metadata.clientID};
+      const update = {plan: event.data.object.metadata.membershipID};
+      
+      const query = Client.updateOne(filter, update, {new: true, runValidators: true});
+      const MembershipBought = await query;
+      
       console.log('Payment successful');
       console.log(event.data.object.customer_email);
       console.log(event.data.object.metadata.membershipID);
+      console.log(event.data.object.metadata.clientID);
 
 
     } else if (event.type === 'checkout.session.failed') {
