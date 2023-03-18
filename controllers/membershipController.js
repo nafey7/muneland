@@ -150,3 +150,21 @@ exports.PurchaseMembershipPlan = async (req,res) => {
         res.status(404).json({status: 404, message: 'fail', data: err.message})
     }
 }
+
+exports.StripeWebhook =  async (req, res) => {
+    const event = req.body;
+  
+    // Handle the event
+    if (event.type === 'checkout.session.completed') {
+      // Payment successful, call the success function
+      console.log('Payment successful');
+      successFunction();
+    } else if (event.type === 'checkout.session.failed') {
+      // Payment failed, call the failure function
+      console.log('Payment failed');
+      failureFunction();
+    }
+  
+    res.sendStatus(200);
+  };
+  

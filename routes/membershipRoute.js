@@ -26,6 +26,11 @@ router
 // PURCHASE THE MEMBERSHIP PLAN
 router
 .route('/purchasemembershipplan')
-.post(protectController.ProtectClient, controller.PurchaseMembershipPlan)
+.post(protectController.ProtectClient, controller.PurchaseMembershipPlan);
+
+// WebHook for Stripe
+router
+.route('/stripe-webhook')
+.post(controller.StripeWebhook)
 
 module.exports = router;
