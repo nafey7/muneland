@@ -122,7 +122,10 @@ exports.CheckoutSession = async (req,res) => {
             line_items: [{
                 price: membershipPlanPrice,
                 quantity: 1
-            }]
+            }],
+            metadata: {
+                "membershipID": MembershipDetails._id
+            }
         })
 
         res.status(200).json({status: 200, message: 'success', membershipID: MembershipDetails._id, data: session});
@@ -159,10 +162,11 @@ exports.StripeWebhook =  async (req, res) => {
       // Payment successful, call the success function
       console.log('Payment successful');
       console.log(event.data.object.customer_email);
+
+
     } else if (event.type === 'checkout.session.failed') {
       // Payment failed, call the failure function
       console.log('Payment failed');
-      failureFunction();
     }
   
     res.sendStatus(200);
