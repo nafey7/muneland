@@ -99,6 +99,8 @@ exports.CheckoutSession = async (req,res) => {
         const query = Membership.findOne({name: req.body.name});
         const MembershipDetails = await query;
 
+        let membershipID = MembershipDetails._id
+
         const querySecond = Client.findById(req.body.clientID);
         const ClientDetails = await querySecond;
 
@@ -124,7 +126,7 @@ exports.CheckoutSession = async (req,res) => {
                 quantity: 1
             }],
             metadata: {
-                "membershipID": MembershipDetails._id
+                "membershipID": membershipID
             }
         })
 
