@@ -158,7 +158,7 @@ exports.StripeWebhook =  async (req, res) => {
     if (event.type === 'checkout.session.completed') {
       // Payment successful, call the success function
       console.log('Payment successful');
-      successFunction();
+      console.log(event.customer_details.email);
     } else if (event.type === 'checkout.session.failed') {
       // Payment failed, call the failure function
       console.log('Payment failed');
