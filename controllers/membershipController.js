@@ -140,30 +140,11 @@ exports.CheckoutSession = async (req,res) => {
     }
 }
 
-exports.PurchaseMembershipPlan = async (req,res) => {
-    try{
-        // In this function, after successful transaction, the plan attribute of the User Model will contain the ID of the membership plan which they have bought.
-
-        const filter = {_id: req.body.clientID};
-        const update = {plan: req.body.membershipID};
-
-        const query = Client.updateOne(filter, update, {new: true, runValidators: true});
-        const MembershipBought = await query;
-
-        res.status(200).json({status: 200, message: 'success', data: MembershipBought})
-    }
-    catch(err){
-        console.log(err);
-        res.status(404).json({status: 404, message: 'fail', data: err.message})
-    }
-}
 
 exports.StripeWebhook =  async (req, res) => {
     const event = req.body;
   
-    // Handle the event
     if (event.type === 'checkout.session.completed') {
-      // Payment successful, call the success function
 
       const filter = {_id: event.data.object.metadata.clientID};
       const update = {plan: event.data.object.metadata.membershipID};
@@ -172,10 +153,6 @@ exports.StripeWebhook =  async (req, res) => {
       const MembershipBought = await query;
       
       console.log('Payment successful');
-      console.log(event.data.object.customer_email);
-      console.log(event.data.object.metadata.membershipID);
-      console.log(event.data.object.metadata.clientID);
-
 
     } else if (event.type === 'checkout.session.failed') {
       // Payment failed, call the failure function

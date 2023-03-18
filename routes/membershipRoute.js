@@ -23,12 +23,7 @@ router
 .route('/leadership')
 .post(protectController.ProtectClient, controller.Leadership, controller.CheckoutSession);
 
-// PURCHASE THE MEMBERSHIP PLAN
-router
-.route('/purchasemembershipplan')
-.post(protectController.ProtectClient, controller.PurchaseMembershipPlan);
-
-// WebHook for Stripe
+// WEBHOOK FOR STRIPE
 router
 .route('/stripe-webhook')
 .post(controller.StripeWebhook)
