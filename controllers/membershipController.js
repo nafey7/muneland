@@ -99,7 +99,8 @@ exports.CheckoutSession = async (req,res) => {
         const query = Membership.findOne({name: req.body.name});
         const MembershipDetails = await query;
 
-        let membershipID = MembershipDetails._id
+        let membershipID = MembershipDetails._id.toString();
+        // console.log('This is membershipID', MembershipDetails._id.toString(), 'Its type is:', typeof(MembershipDetails._id.toString()));
 
         const querySecond = Client.findById(req.body.clientID);
         const ClientDetails = await querySecond;
