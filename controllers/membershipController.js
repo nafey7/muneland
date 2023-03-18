@@ -125,7 +125,7 @@ exports.CheckoutSession = async (req,res) => {
             }]
         })
 
-        res.status(200).json({status: 200, message: 'success', data: session});
+        res.status(200).json({status: 200, message: 'success', membershipID: MembershipDetails._id, data: session});
     }
     catch(err){
         console.log(err);
