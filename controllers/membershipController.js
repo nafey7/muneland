@@ -1,5 +1,6 @@
 const Membership = require('../models/membershipModel');
 const Client = require('../models/clientModel');
+const Freelancer = require('../models/freelancerModel');
 const stripe = require('stripe')('sk_test_51EpXsJKzyQ5VvESkZPscZDoi6zlsgRAu2G29xarnkAEhRLcpgNC1HuoVZh9CdCO2lJpo98Rx5l5GaC50bQpKksHs001U71yxPc');
 
 exports.AddMembershipPlan = async (req,res) => {
@@ -168,14 +169,18 @@ exports.StripeWebhook =  async (req, res) => {
   
   exports.ReLogin = async (req,res) => {
     try{
-        const queryMembership = Membership.findOne({_id: '63de5d3fc0e94cdba7984719'
-        });
-        const MembershipName = await queryMembership;
-        console.log(MembershipName.name);
-        const query = Client.find({_id: req.body.clientID}).select('-password');
-        const UserInfo = await query;
+        
+        const query = Client.findOne({_id: req.body.clientID}).select('-createdAt -updatedAt -__v');
+        const findClient = await query;
 
-        res.status(200).json({status: 200, message: 'success', data: UserInfo})
+        // const token = jwt.sign({id: findClient._id}, 'muneland-secret');
+
+        const querySecond = Freelancer.find().select('-selfRating -cost -createdAt -updatedAt -__v -password');
+        const listFreelancers = await querySecond;
+
+        const finalData = {client: findClient, freelancersList: listFreelancers};
+
+        res.status(200).json({status: '200', message: 'success', data: finalData});
     }
     catch(err){
         console.log(err);
