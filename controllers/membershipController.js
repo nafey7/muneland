@@ -146,7 +146,7 @@ exports.StripeWebhook =  async (req, res) => {
   
     if (event.type === 'checkout.session.completed') {
         
-        const queryMembership = Membership.findOne({_id: req.event.data.object.metadata.membershipID});
+        const queryMembership = Membership.findOne({_id: event.data.object.metadata.membershipID});
         const MembershipName = await queryMembership;
 
         const filter = {_id: event.data.object.metadata.clientID};
