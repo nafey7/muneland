@@ -28,4 +28,9 @@ router
 .route('/stripe-webhook')
 .post(controller.StripeWebhook)
 
+// LOGIN CALL
+router
+.route('/logincall')
+.post(protectController.ProtectClient, controller.MembershipLogin);
+
 module.exports = router;

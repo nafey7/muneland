@@ -119,7 +119,7 @@ exports.CheckoutSession = async (req,res) => {
         const session = await stripe.checkout.sessions.create({
             mode: 'subscription',
             payment_method_types: ['card'],
-            success_url: 'https://munland-fe.vercel.app/strategy',
+            success_url: `https://munland-fe.vercel.app/strategy?token=${req.body.token}`,
             cancel_url: 'https://munland-fe.vercel.app',
             customer_email: ClientDetails.emailAddress,
             line_items: [{
@@ -162,3 +162,15 @@ exports.StripeWebhook =  async (req, res) => {
     res.sendStatus(200);
   };
   
+  exports.MembershipLogin = async (req,res) => {
+    try{
+        const query = Client.find({_id: req.body.clientID}).select('-password');
+        const UserInfo = await query;
+
+        res.status(200).json({status: 200, message: 'success', data: UserInfo})
+    }
+    catch(err){
+        console.log(err);
+        res.status(404).json({status:404, message: 'fail'})
+    }
+  }

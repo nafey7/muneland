@@ -369,7 +369,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"emailAddress\":\"abc2@gmail.com\",\n    \"password\":\"abcd1234\"\n}",
+							"raw": "{\n    \"emailAddress\":\"abc3@gmail.com\",\n    \"password\":\"abcd1234\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -665,42 +665,13 @@
 			"name": "MEMBERSHIP",
 			"item": [
 				{
-					"name": "Purchase Membership Plan",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"membershipID\": \"63de5d3fc0e94cdba7984719\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGRiNTYxOGJjNWEyNjg3YzcyZTI0NCIsImlhdCI6MTY3ODYyMDQ1MX0.B7vXW-wIa3yP2tLoL7pWjpueXXSudXA0m-s-HAdXUfE\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/membership/purchasemembershipplan",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"membership",
-								"purchasemembershipplan"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Strategy and Vision",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDhmM2I5OWQzMzljNmU0YWFiYzU5NSIsImlhdCI6MTY3ODYxOTM3Nn0.HXgFLnk0T6D6i_73PRlnsJICwdmTr5cCZVOwNGkTVWo\"\n}",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTQxMzllZTJlNmJkN2IwMDhhYTBkZSIsImlhdCI6MTY3OTE4MDU0NH0.pXo17-dCp_4EKV34EaS9GT2Uw96FgYSrtrXAh3BT-Gg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -729,7 +700,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDhmM2I5OWQzMzljNmU0YWFiYzU5NSIsImlhdCI6MTY3ODYxOTM3Nn0.HXgFLnk0T6D6i_73PRlnsJICwdmTr5cCZVOwNGkTVWo\"\n}",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTQxMzllZTJlNmJkN2IwMDhhYTBkZSIsImlhdCI6MTY3OTE4MDU0NH0.pXo17-dCp_4EKV34EaS9GT2Uw96FgYSrtrXAh3BT-Gg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -804,6 +775,35 @@
 							"path": [
 								"membership",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Membership Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTQxMzllZTJlNmJkN2IwMDhhYTBkZSIsImlhdCI6MTY3OTE4MDU0NH0.pXo17-dCp_4EKV34EaS9GT2Uw96FgYSrtrXAh3BT-Gg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/membership/logincall",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"membership",
+								"logincall"
 							]
 						}
 					},
