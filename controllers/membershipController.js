@@ -115,11 +115,11 @@ exports.CheckoutSession = async (req,res) => {
         else if (MembershipDetails.type === 'ENTERPRISE'){
             membershipPlanPrice = 'price_1Mk8V3KzyQ5VvESk1G8JKCPP';
         }
-
+        // `https://munland-fe.vercel.app/strategy?token=${req.body.token}`
         const session = await stripe.checkout.sessions.create({
             mode: 'subscription',
             payment_method_types: ['card'],
-            success_url: `https://munland-fe.vercel.app/strategy?token=${req.body.token}`,
+            success_url: `http://localhost:3000/strategy?token=${req.body.token}`,
             cancel_url: 'https://munland-fe.vercel.app',
             customer_email: ClientDetails.emailAddress,
             line_items: [{
