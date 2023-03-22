@@ -120,7 +120,7 @@ exports.CheckoutSession = async (req,res) => {
         const session = await stripe.checkout.sessions.create({
             mode: 'subscription',
             payment_method_types: ['card'],
-            success_url: `http://localhost:3000?token=${req.body.token}`,
+            success_url: `https://munland-fe.vercel.app/strategy?token=${req.body.token}`,
             cancel_url: 'https://munland-fe.vercel.app',
             customer_email: ClientDetails.emailAddress,
             line_items: [{
