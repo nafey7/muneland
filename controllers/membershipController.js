@@ -146,7 +146,7 @@ exports.StripeWebhook =  async (req, res) => {
   
     if (event.type === 'checkout.session.completed') {
         
-        const queryMembership = Membership.find({_id: req.event.data.object.metadata.membershipID});
+        const queryMembership = Membership.findOne({_id: req.event.data.object.metadata.membershipID});
         const MembershipName = await queryMembership;
 
         const filter = {_id: event.data.object.metadata.clientID};
@@ -168,6 +168,10 @@ exports.StripeWebhook =  async (req, res) => {
   
   exports.ReLogin = async (req,res) => {
     try{
+        const queryMembership = Membership.findOne({_id: '63de5d3fc0e94cdba7984719'
+        });
+        const MembershipName = await queryMembership;
+        console.log(MembershipName.name);
         const query = Client.find({_id: req.body.clientID}).select('-password');
         const UserInfo = await query;
 
