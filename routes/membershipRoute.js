@@ -30,7 +30,7 @@ router
 
 // LOGIN CALL
 router
-.route('/logincall')
-.post(protectController.ProtectClient, controller.MembershipLogin);
+.route('/reLogin')
+.post(protectController.ProtectClient, controller.ReLogin);
 
 module.exports = router;

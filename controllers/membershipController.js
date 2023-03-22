@@ -162,7 +162,7 @@ exports.StripeWebhook =  async (req, res) => {
     res.sendStatus(200);
   };
   
-  exports.MembershipLogin = async (req,res) => {
+  exports.ReLogin = async (req,res) => {
     try{
         const query = Client.find({_id: req.body.clientID}).select('-password');
         const UserInfo = await query;

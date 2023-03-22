@@ -781,7 +781,7 @@
 					"response": []
 				},
 				{
-					"name": "Membership Login",
+					"name": "ReLogin",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -795,7 +795,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/membership/logincall",
+							"raw": "http://localhost:8000/membership/reLogin",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -803,7 +803,7 @@
 							"port": "8000",
 							"path": [
 								"membership",
-								"logincall"
+								"reLogin"
 							]
 						}
 					},
