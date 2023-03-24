@@ -8,6 +8,10 @@ const Membership = require('../models/membershipModel');
 
 exports.Signup = async (req,res) => {
     try{
+        if(!req.body.firstName || !req.body.emailAddress || !req.body.password){
+            throw new Error('Required information is not provided')
+        }
+
         const query = Client.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -29,7 +33,7 @@ exports.Signup = async (req,res) => {
     }
     catch(err){
         console.log(err);
-        res.status(404).json({status: '404', message: 'fail'});
+        res.status(404).json({status: '404', message: 'fail', data: err.message});
     }
 }
 
