@@ -36,7 +36,7 @@ exports.StrategyAndVision = async (req,res, next) => {
         const querySecond = Client.findById(req.body.clientID);
         const ClientInfo = await querySecond;
 
-        if (strategyAndVision._id.toString() === ClientInfo.plan){
+        if (strategyAndVision.name === ClientInfo.plan){
             res.status(200).json({status: 200, message: 'success', data: strategyAndVision});
         }
         else{
@@ -60,7 +60,7 @@ exports.Solution = async (req,res, next) => {
         const querySecond = Client.findById(req.body.clientID);
         const ClientInfo = await querySecond;
 
-        if (solution._id.toString() === ClientInfo.plan){
+        if (solution.name === ClientInfo.plan){
             res.status(200).json({status: 200, message: 'success', data: solution});
         }
         else{
@@ -82,7 +82,7 @@ exports.Leadership = async (req,res, next) => {
         const querySecond = Client.findById(req.body.clientID);
         const ClientInfo = await querySecond;
 
-        if (leadership._id.toString() === ClientInfo.plan){
+        if (leadership.name === ClientInfo.plan){
             res.status(200).json({status: 200, message: 'success', data: leadership});
         }
         else{
@@ -121,7 +121,7 @@ exports.CheckoutSession = async (req,res) => {
             mode: 'subscription',
             payment_method_types: ['card'],
             success_url: `https://munland-fe.vercel.app/?token=${req.body.token}`,
-            cancel_url: 'https://munland-fe.vercel.app',
+            cancel_url: `https://munland-fe.vercel.app/?token=${req.body.token}`,
             customer_email: ClientDetails.emailAddress,
             line_items: [{
                 price: membershipPlanPrice,
