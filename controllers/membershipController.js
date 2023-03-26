@@ -101,26 +101,30 @@ exports.CheckoutSession = async (req,res) => {
         const MembershipDetails = await query;
 
         let membershipID = MembershipDetails._id.toString();
-        // console.log('This is membershipID', MembershipDetails._id.toString(), 'Its type is:', typeof(MembershipDetails._id.toString()));
 
         const querySecond = Client.findById(req.body.clientID);
         const ClientDetails = await querySecond;
 
-        let membershipPlanPrice = ''
+        let membershipPlanPrice = '';
+        let MembershipName = '';
+
         if (MembershipDetails.type === 'PERSONAL'){
             membershipPlanPrice = 'price_1Mk8TjKzyQ5VvESkWhIKZ75Z';
+            MembershipName = 'strategyandvision'
         }
         else if (MembershipDetails.type === 'START UP'){
             membershipPlanPrice = 'price_1Mk8UOKzyQ5VvESk7WjsRK5Q';
+            MembershipName = 'solution'
         }
         else if (MembershipDetails.type === 'ENTERPRISE'){
             membershipPlanPrice = 'price_1Mk8V3KzyQ5VvESk1G8JKCPP';
+            MembershipName = 'leadership'
         }
         // `https://munland-fe.vercel.app/strategy?token=${req.body.token}`
         const session = await stripe.checkout.sessions.create({
             mode: 'subscription',
             payment_method_types: ['card'],
-            success_url: `https://munland-fe.vercel.app/strategy/?token=${req.body.token}`,
+            success_url: `https://munland-fe.vercel.app/strategy/?token=${req.body.token}&membership=${MembershipName}`,
             cancel_url: `https://munland-fe.vercel.app/?token=${req.body.token}`,
             customer_email: ClientDetails.emailAddress,
             line_items: [{
