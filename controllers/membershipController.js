@@ -151,12 +151,16 @@ exports.StripeWebhook =  async (req, res) => {
   
     if (event.type === 'checkout.session.completed') {
         
+        // Getting User Info
         const queryMembership = Membership.findOne({_id: event.data.object.metadata.membershipID});
         const MembershipName = await queryMembership;
 
+        // Check if plan is empty. If yes, send email, otherwise dont
+
+
         const filter = {_id: event.data.object.metadata.clientID};
         // const update = {plan: event.data.object.metadata.membershipID};
-        const update = {plan: MembershipName.name};
+        const update = { $push: { plan: 'string value' } }
         
         const query = Client.updateOne(filter, update, {new: true, runValidators: true});
         const MembershipBought = await query;

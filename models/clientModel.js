@@ -37,8 +37,8 @@ const clientSchema = new Schema({
         type: String
     },
     plan : {
-        type: String,
-        default: ''
+        type: Array,
+        "default" : []
     }
     
 },
