@@ -160,7 +160,7 @@ exports.StripeWebhook =  async (req, res) => {
 
         const filter = {_id: event.data.object.metadata.clientID};
         // const update = {plan: event.data.object.metadata.membershipID};
-        const update = { $push: { plan: 'string value' } }
+        const update = { $push: { plan: MembershipName.name } }
         
         const query = Client.updateOne(filter, update, {new: true, runValidators: true});
         const MembershipBought = await query;
