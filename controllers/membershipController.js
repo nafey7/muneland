@@ -156,12 +156,16 @@ exports.StripeWebhook =  async (req, res) => {
         
         // Getting User Info
         const queryMembership = Membership.findOne({_id: event.data.object.metadata.membershipID});
-        const MembershipName = await queryMembership;
+        const MembershipName = await queryMembership; 
 
-        console.log('This is the plan', MembershipName.plan, 'Its type is', typeof(MembershipName.plan));
-        // if (MembershipName.plan == []){
-        // }
-        let emailSend = await helperController.SendEmail(MembershipName);
+        const queryClient = Client.findOne({_id: event.data.object.metadata.clientID});
+        const clientInfo = await queryClient;
+
+        console.log('This is the plan', clientInfo.plan);
+        
+        if (MembershipName.plan == []){
+            let emailSend = await helperController.SendEmail(clientInfo);
+        }
 
         const filter = {_id: event.data.object.metadata.clientID};
         // const update = {plan: event.data.object.metadata.membershipID};
