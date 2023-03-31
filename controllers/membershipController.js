@@ -3,6 +3,8 @@ const Client = require('../models/clientModel');
 const Freelancer = require('../models/freelancerModel');
 const stripe = require('stripe')('sk_test_51EpXsJKzyQ5VvESkZPscZDoi6zlsgRAu2G29xarnkAEhRLcpgNC1HuoVZh9CdCO2lJpo98Rx5l5GaC50bQpKksHs001U71yxPc');
 const helperController = require('../controllers/helperController');
+const nodemailer = require("nodemailer");
+
 
 
 
