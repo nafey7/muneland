@@ -186,9 +186,16 @@ exports.StripeWebhook =  async (req, res) => {
             from: process.env.EMAIL,
             to: clientInfo.emailAddress,
             subject: 'Thanks for joining Muneland',
+            attachments: [
+                {
+                  filename: 'icon.png',
+                  content: fs.createReadStream('../images/icon.png'),
+                  cid: 'image'
+                }
+              ],
             html: `
             <div style="text-align:center;">
-            <img src="../images/icon.png" alt="your_image" />
+            <img src="cid: image" alt="your_image" />
             </div>
             <p>Hi ${clientInfo.firstName} &#x1F44B;. <br />We are so excited to have you on board with Muneland! &#x1F973; &#x1F973; &#x1F973;</p>
             <br />
