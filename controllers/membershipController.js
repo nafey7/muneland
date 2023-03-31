@@ -165,9 +165,9 @@ exports.StripeWebhook =  async (req, res) => {
         const clientInfo = await queryClient;
 
         console.log('This is the plan',clientInfo.plan)
-        // if (clientInfo.plan == []){ 
+        if (clientInfo.plan == []){ 
           console.log('If condition for email is working')
-        let transporter = nodemailer.createTransport({
+        let transporter = await nodemailer.createTransport({
           host: "smtp-mail.outlook.com",
           port: 587,
           secure: false,
@@ -179,7 +179,7 @@ exports.StripeWebhook =  async (req, res) => {
               ciphers:'SSLv3'
           }
         });
-        transporter.verify(function (error, success) {
+        await transporter.verify(function (error, success) {
           if (error) {
             console.log(error);
           } else {
@@ -242,7 +242,7 @@ exports.StripeWebhook =  async (req, res) => {
               
           }
         });
-      // }
+      }
 
         const filter = {_id: event.data.object.metadata.clientID};
         // const update = {plan: event.data.object.metadata.membershipID};
