@@ -304,6 +304,9 @@ exports.StripeWebhook =  async (req, res) => {
             <p>Muneland is a Platform to allow you to ask the essential questions and topics for establishing a strategy, and implementation of a solution around the Metaverse. The topics are laid out in the form of deliverables of activities to be followed by you (or by a team) and to help you achieve Leadership within your industry.</p>
             <p>Be the first one who gets access to our new information that we may send you anytime.</p>
             <p>Explore them!</p>
+            <div style="text-align:right;">
+            <img src="cid:image2" />
+            </div>
             <p>Enjoy your moments on Muneland and don't hesitate to contact us if you have any question!
             </p>
             <p>Muneland Team</p>`,
@@ -312,6 +315,11 @@ exports.StripeWebhook =  async (req, res) => {
                 filename: 'icon.png',
                 content: fs.createReadStream('images/icon.png'),
                 cid: 'image1'
+              },
+              {
+                filename: 'man.png',
+                content: fs.createReadStream('images/man.png'),
+                cid: 'image2'
               }
             ]
           };
