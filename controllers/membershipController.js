@@ -188,10 +188,16 @@ exports.StripeWebhook =  async (req, res) => {
             subject: 'Thanks for joining Muneland',
             html: `<p>Hi ${clientInfo.firstName} <br />We are so excited to have you on board with Muneland!</p>
             <br />
+            <h4>WHY?</h4>
+            <p>The need for a sustainable and insightful asset that could guide the technological conversations became prevalent with a sudden spurt of interest in the metaverse. That's why we've created Muneland.</p>
             <br />
-            <h3>WHY?</h3>
-            <br />
-            <p>The need for a sustainable and insightful asset that could guide the technological conversations became prevalent with a sudden spurt of interest in the metaverse. That's why we've created Muneland.</p>`
+            <h4>Value</h4>
+            <p>Muneland is a Platform to allow you to ask the essential questions and topics for establishing a strategy, and implementation of a solution around the Metaverse. The topics are laid out in the form of deliverables of activities to be followed by you (or by a team) and to help you achieve Leadership within your industry.</p>
+            <p>Be the first one who gets access to our new information that we may send you anytime.</p>
+            <p>Explore them!</p>
+            <p>Enjoy your moments on Muneland and don't hesitate to contact us if you have any question!
+            </p>
+            <p>Muneland Team</p>`
           };
           
           await transporter.sendMail(mailOptions, function(error, info){
