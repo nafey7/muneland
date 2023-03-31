@@ -186,8 +186,10 @@ exports.StripeWebhook =  async (req, res) => {
             from: process.env.EMAIL,
             to: clientInfo.emailAddress,
             subject: 'Thanks for joining Muneland',
-            html: `<img src="../images/icon.png" alt="your_image" />
-            <br />
+            html: `
+            <div style="text-align:center;">
+            <img src="../images/icon.png" alt="your_image" />
+            </div>
             <p>Hi ${clientInfo.firstName} &#x1F44B;. <br />We are so excited to have you on board with Muneland! &#x1F973; &#x1F973; &#x1F973;</p>
             <br />
             <h4>WHY?</h4>
