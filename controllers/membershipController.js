@@ -186,7 +186,7 @@ exports.StripeWebhook =  async (req, res) => {
             from: process.env.EMAIL,
             to: clientInfo.emailAddress,
             subject: 'Thanks for joining Muneland',
-            html: `<p>Hi ${clientInfo.firstName} <br />We are so excited to have you on board with Muneland!</p>
+            html: `<p>Hi ${clientInfo.firstName} &#x1F44B;. <br />We are so excited to have you on board with Muneland! &#x1F973; &#x1F973; &#x1F973;</p>
             <br />
             <h4>WHY?</h4>
             <p>The need for a sustainable and insightful asset that could guide the technological conversations became prevalent with a sudden spurt of interest in the metaverse. That's why we've created Muneland.</p>
