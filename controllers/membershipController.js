@@ -190,7 +190,7 @@ exports.StripeWebhook =  async (req, res) => {
             attachments: [
                 {
                   filename: 'icon.png',
-                  content: fs.createReadStream('../images/icon.png'),
+                  content: fs.createReadStream('/images/icon.png'),
                   cid: 'image'
                 }
               ],
