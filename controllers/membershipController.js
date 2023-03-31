@@ -164,8 +164,9 @@ exports.StripeWebhook =  async (req, res) => {
         const queryClient = Client.findOne({_id: event.data.object.metadata.clientID});
         const clientInfo = await queryClient;
 
+        console.log('This is the plan',clientInfo.plan)
         if (clientInfo.plan == []){ 
-
+          console.log('If condition for email is working')
         let transporter = nodemailer.createTransport({
           host: "smtp-mail.outlook.com",
           port: 587,
