@@ -297,19 +297,19 @@ exports.StripeWebhook =  async (req, res) => {
             </div>
             <p>Hi ${clientInfo.firstName} &#x1F44B;. <br />We are so excited to have you on board with Muneland! &#x1F973; &#x1F973; &#x1F973;</p>
             <br />
-            <h4>WHY?</h4>
+            <h4 style="display:inline;">WHY?</h4>   <img src="cid:image3" />
             <p>The need for a sustainable and insightful asset that could guide the technological conversations became prevalent with a sudden spurt of interest in the metaverse. That's why we've created Muneland.</p>
             <br />
-            <h4>Value</h4>
+            <h4 style="display:inline;">Value</h4>  <img src="cid:image4" />
             <p>Muneland is a Platform to allow you to ask the essential questions and topics for establishing a strategy, and implementation of a solution around the Metaverse. The topics are laid out in the form of deliverables of activities to be followed by you (or by a team) and to help you achieve Leadership within your industry.</p>
             <p>Be the first one who gets access to our new information that we may send you anytime.</p>
             <div>
             <p>Explore them!</p>
-            <img src="cid:image2" width="233" height="261" style="float:right;" />
+            <img src="cid:image2" width="117" height="130" style="float:right;" />
             <p>Enjoy your moments on Muneland and don't hesitate to contact us if you have any question!
             </p>
             </div>
-            <p>Muneland Team</p>`,
+            <p">Muneland Team</p>`,
             attachments: [
               {
                 filename: 'icon.png',
@@ -320,6 +320,16 @@ exports.StripeWebhook =  async (req, res) => {
                 filename: 'man.png',
                 content: fs.createReadStream('images/man.png'),
                 cid: 'image2'
+              },
+              {
+                filename: 'why.png',
+                content: fs.createReadStream('images/why.png'),
+                cid: 'image3'
+              },
+              {
+                filename: 'value.png',
+                content: fs.createReadStream('images/value.png'),
+                cid: 'image4'
               }
             ]
           };
