@@ -164,8 +164,8 @@ exports.StripeWebhook =  async (req, res) => {
         const queryClient = Client.findOne({_id: event.data.object.metadata.clientID});
         const clientInfo = await queryClient;
 
-        console.log('This is the plan',clientInfo.plan)
-        if (clientInfo.plan == []){ 
+        console.log('This is the plan',clientInfo.plan.length)
+        if (clientInfo.plan.length == 0){ 
             console.log('If condition for email is working')
         }
         let transporter = await nodemailer.createTransport({
