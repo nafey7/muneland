@@ -164,63 +164,84 @@ exports.StripeWebhook =  async (req, res) => {
         const queryClient = Client.findOne({_id: event.data.object.metadata.clientID});
         const clientInfo = await queryClient;
 
+        if (clientInfo.plan == []){ 
+
         let transporter = nodemailer.createTransport({
-            host: "smtp-mail.outlook.com",
-            port: 587,
-            secure: false,
-            auth: {
-              user: process.env.EMAIL,
-              pass: process.env.PASSWORD
+          host: "smtp-mail.outlook.com",
+          port: 587,
+          secure: false,
+          auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD
+          },
+          tls: {
+              ciphers:'SSLv3'
+          }
+        });
+        transporter.verify(function (error, success) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Server is ready to take our messages");
+          }
+        });
+        let mailOptions = {
+          from: process.env.EMAIL,
+          to: clientInfo.emailAddress,
+          subject: 'Thanks for joining Muneland',
+          html: `
+          <div style="text-align:center;">
+          <img src="cid:image1" width="163" height="52" />
+          </div>
+          <p>Hi ${clientInfo.firstName} &#x1F44B;. <br />We are so excited to have you on board with Muneland! &#x1F973; &#x1F973; &#x1F973;</p>
+          <br />
+          <h4 style="display:inline;">WHY?</h4>   <img src="cid:image3" width="20px" height="20px"/>
+          <p>The need for a sustainable and insightful asset that could guide the technological conversations became prevalent with a sudden spurt of interest in the metaverse. That's why we've created Muneland.</p>
+          <br />
+          <h4 style="display:inline;">Value</h4>  <img src="cid:image4" width="20px" height="20px" />
+          <p>Muneland is a Platform to allow you to ask the essential questions and topics for establishing a strategy, and implementation of a solution around the Metaverse. The topics are laid out in the form of deliverables of activities to be followed by you (or by a team) and to help you achieve Leadership within your industry.</p>
+          <p>Be the first one who gets access to our new information that we may send you anytime.</p>
+          <div>
+          <p>Explore them!</p>
+          <img src="cid:image2" width="117" height="130" style="float:right;" />
+          <p>Enjoy your moments on Muneland and don't hesitate to contact us if you have any question!
+          </p>
+          </div>
+          <p">Muneland Team</p>`,
+          attachments: [
+            {
+              filename: 'icon.png',
+              content: fs.createReadStream('images/icon.png'),
+              cid: 'image1'
             },
-            tls: {
-                ciphers:'SSLv3'
+            {
+              filename: 'man.png',
+              content: fs.createReadStream('images/man.png'),
+              cid: 'image2'
+            },
+            {
+              filename: 'why.png',
+              content: fs.createReadStream('images/why.png'),
+              cid: 'image3'
+            },
+            {
+              filename: 'value.png',
+              content: fs.createReadStream('images/value.png'),
+              cid: 'image4'
             }
-          });
-          transporter.verify(function (error, success) {
-            if (error) {
+          ]
+        };
+        
+        await transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
               console.log(error);
-            } else {
-              console.log("Server is ready to take our messages");
-            }
-          });
-          let mailOptions = {
-            from: process.env.EMAIL,
-            to: clientInfo.emailAddress,
-            subject: 'Thanks for joining Muneland',
-            attachments: [
-                {
-                  filename: 'icon.png',
-                  content: fs.createReadStream('images/icon.png'),
-                  cid: 'image'
-                }
-              ],
-            html: `
-            <div style="text-align:center;">
-            <img src="cid: image" alt="your_image" />
-            </div>
-            <p>Hi ${clientInfo.firstName} &#x1F44B;. <br />We are so excited to have you on board with Muneland! &#x1F973; &#x1F973; &#x1F973;</p>
-            <br />
-            <h4>WHY?</h4>
-            <p>The need for a sustainable and insightful asset that could guide the technological conversations became prevalent with a sudden spurt of interest in the metaverse. That's why we've created Muneland.</p>
-            <br />
-            <h4>Value</h4>
-            <p>Muneland is a Platform to allow you to ask the essential questions and topics for establishing a strategy, and implementation of a solution around the Metaverse. The topics are laid out in the form of deliverables of activities to be followed by you (or by a team) and to help you achieve Leadership within your industry.</p>
-            <p>Be the first one who gets access to our new information that we may send you anytime.</p>
-            <p>Explore them!</p>
-            <p>Enjoy your moments on Muneland and don't hesitate to contact us if you have any question!
-            </p>
-            <p>Muneland Team</p>`
-          };
-          
-          await transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-                console.log(error);
-                throw new Error ('Unexpected Error while sending Email')
-            } else {
-                console.log('Email sent: ' + info.response);
-                
-            }
-          });
+              throw new Error ('Unexpected Error while sending Email')
+          } else {
+              console.log('Email sent: ' + info.response);
+              
+          }
+        });
+      }
 
         const filter = {_id: event.data.object.metadata.clientID};
         // const update = {plan: event.data.object.metadata.membershipID};
@@ -260,93 +281,93 @@ exports.StripeWebhook =  async (req, res) => {
     }
   }
 
-  exports.EmailCheckTest = async (req,res) => {
-    try{
-        // let x = fs.createReadStream('images/icon.png');
-        // console.log(x);
-        // throw new Error('please bitch');
-        const queryClient = Client.findOne({_id: req.body.clientID});
-        const clientInfo = await queryClient;
+  // exports.EmailCheckTest = async (req,res) => {
+  //   try{
+  //       // let x = fs.createReadStream('images/icon.png');
+  //       // console.log(x);
+  //       // throw new Error('please bitch');
+  //       const queryClient = Client.findOne({_id: req.body.clientID});
+  //       const clientInfo = await queryClient;
 
-        let transporter = nodemailer.createTransport({
-            host: "smtp-mail.outlook.com",
-            port: 587,
-            secure: false,
-            auth: {
-              user: process.env.EMAIL,
-              pass: process.env.PASSWORD
-            },
-            tls: {
-                ciphers:'SSLv3'
-            }
-          });
-          transporter.verify(function (error, success) {
-            if (error) {
-              console.log(error);
-            } else {
-              console.log("Server is ready to take our messages");
-            }
-          });
-          let mailOptions = {
-            from: process.env.EMAIL,
-            to: clientInfo.emailAddress,
-            subject: 'Thanks for joining Muneland',
-            html: `
-            <div style="text-align:center;">
-            <img src="cid:image1" width="163" height="52" />
-            </div>
-            <p>Hi ${clientInfo.firstName} &#x1F44B;. <br />We are so excited to have you on board with Muneland! &#x1F973; &#x1F973; &#x1F973;</p>
-            <br />
-            <h4 style="display:inline;">WHY?</h4>   <img src="cid:image3" width="20px" height="20px"/>
-            <p>The need for a sustainable and insightful asset that could guide the technological conversations became prevalent with a sudden spurt of interest in the metaverse. That's why we've created Muneland.</p>
-            <br />
-            <h4 style="display:inline;">Value</h4>  <img src="cid:image4" width="20px" height="20px" />
-            <p>Muneland is a Platform to allow you to ask the essential questions and topics for establishing a strategy, and implementation of a solution around the Metaverse. The topics are laid out in the form of deliverables of activities to be followed by you (or by a team) and to help you achieve Leadership within your industry.</p>
-            <p>Be the first one who gets access to our new information that we may send you anytime.</p>
-            <div>
-            <p>Explore them!</p>
-            <img src="cid:image2" width="117" height="130" style="float:right;" />
-            <p>Enjoy your moments on Muneland and don't hesitate to contact us if you have any question!
-            </p>
-            </div>
-            <p">Muneland Team</p>`,
-            attachments: [
-              {
-                filename: 'icon.png',
-                content: fs.createReadStream('images/icon.png'),
-                cid: 'image1'
-              },
-              {
-                filename: 'man.png',
-                content: fs.createReadStream('images/man.png'),
-                cid: 'image2'
-              },
-              {
-                filename: 'why.png',
-                content: fs.createReadStream('images/why.png'),
-                cid: 'image3'
-              },
-              {
-                filename: 'value.png',
-                content: fs.createReadStream('images/value.png'),
-                cid: 'image4'
-              }
-            ]
-          };
+  //       let transporter = nodemailer.createTransport({
+  //           host: "smtp-mail.outlook.com",
+  //           port: 587,
+  //           secure: false,
+  //           auth: {
+  //             user: process.env.EMAIL,
+  //             pass: process.env.PASSWORD
+  //           },
+  //           tls: {
+  //               ciphers:'SSLv3'
+  //           }
+  //         });
+  //         transporter.verify(function (error, success) {
+  //           if (error) {
+  //             console.log(error);
+  //           } else {
+  //             console.log("Server is ready to take our messages");
+  //           }
+  //         });
+  //         let mailOptions = {
+  //           from: process.env.EMAIL,
+  //           to: clientInfo.emailAddress,
+  //           subject: 'Thanks for joining Muneland',
+  //           html: `
+  //           <div style="text-align:center;">
+  //           <img src="cid:image1" width="163" height="52" />
+  //           </div>
+  //           <p>Hi ${clientInfo.firstName} &#x1F44B;. <br />We are so excited to have you on board with Muneland! &#x1F973; &#x1F973; &#x1F973;</p>
+  //           <br />
+  //           <h4 style="display:inline;">WHY?</h4>   <img src="cid:image3" width="20px" height="20px"/>
+  //           <p>The need for a sustainable and insightful asset that could guide the technological conversations became prevalent with a sudden spurt of interest in the metaverse. That's why we've created Muneland.</p>
+  //           <br />
+  //           <h4 style="display:inline;">Value</h4>  <img src="cid:image4" width="20px" height="20px" />
+  //           <p>Muneland is a Platform to allow you to ask the essential questions and topics for establishing a strategy, and implementation of a solution around the Metaverse. The topics are laid out in the form of deliverables of activities to be followed by you (or by a team) and to help you achieve Leadership within your industry.</p>
+  //           <p>Be the first one who gets access to our new information that we may send you anytime.</p>
+  //           <div>
+  //           <p>Explore them!</p>
+  //           <img src="cid:image2" width="117" height="130" style="float:right;" />
+  //           <p>Enjoy your moments on Muneland and don't hesitate to contact us if you have any question!
+  //           </p>
+  //           </div>
+  //           <p">Muneland Team</p>`,
+  //           attachments: [
+  //             {
+  //               filename: 'icon.png',
+  //               content: fs.createReadStream('images/icon.png'),
+  //               cid: 'image1'
+  //             },
+  //             {
+  //               filename: 'man.png',
+  //               content: fs.createReadStream('images/man.png'),
+  //               cid: 'image2'
+  //             },
+  //             {
+  //               filename: 'why.png',
+  //               content: fs.createReadStream('images/why.png'),
+  //               cid: 'image3'
+  //             },
+  //             {
+  //               filename: 'value.png',
+  //               content: fs.createReadStream('images/value.png'),
+  //               cid: 'image4'
+  //             }
+  //           ]
+  //         };
           
-          await transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-                console.log(error);
-                throw new Error ('Unexpected Error while sending Email')
-            } else {
-                console.log('Email sent: ' + info.response);
+  //         await transporter.sendMail(mailOptions, function(error, info){
+  //           if (error) {
+  //               console.log(error);
+  //               throw new Error ('Unexpected Error while sending Email')
+  //           } else {
+  //               console.log('Email sent: ' + info.response);
                 
-            }
-          });
-          res.send('success');
-    }
-    catch(err){
-        console.log(err);
-        res.send('fail')
-    }
-  }
+  //           }
+  //         });
+  //         res.send('success');
+  //   }
+  //   catch(err){
+  //       console.log(err);
+  //       res.send('fail')
+  //   }
+  // }
