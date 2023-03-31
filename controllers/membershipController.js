@@ -2,6 +2,9 @@ const Membership = require('../models/membershipModel');
 const Client = require('../models/clientModel');
 const Freelancer = require('../models/freelancerModel');
 const stripe = require('stripe')('sk_test_51EpXsJKzyQ5VvESkZPscZDoi6zlsgRAu2G29xarnkAEhRLcpgNC1HuoVZh9CdCO2lJpo98Rx5l5GaC50bQpKksHs001U71yxPc');
+const helperController = require('../controllers/helperController');
+
+
 
 exports.AddMembershipPlan = async (req,res) => {
 
@@ -155,8 +158,9 @@ exports.StripeWebhook =  async (req, res) => {
         const queryMembership = Membership.findOne({_id: event.data.object.metadata.membershipID});
         const MembershipName = await queryMembership;
 
-        // Check if plan is empty. If yes, send email, otherwise dont
-
+        if (MembershipName.plan == []){
+            let emailSend = await helperController.SendEmail(MembershipName);
+        }
 
         const filter = {_id: event.data.object.metadata.clientID};
         // const update = {plan: event.data.object.metadata.membershipID};
