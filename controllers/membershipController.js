@@ -185,8 +185,13 @@ exports.StripeWebhook =  async (req, res) => {
           let mailOptions = {
             from: process.env.EMAIL,
             to: clientInfo.emailAddress,
-            subject: 'Welcome to Muneland',
-            html: `<p>Use the following PIN for authentication</p>`
+            subject: 'Thanks for joining Muneland',
+            html: `<p>Hi ${clientInfo.firstName} <br />We are so excited to have you on board with Muneland!</p>
+            <br />
+            <br />
+            <h3>WHY?</h3>
+            <br />
+            <p>The need for a sustainable and insightful asset that could guide the technological conversations became prevalent with a sudden spurt of interest in the metaverse. That's why we've created Muneland.</p>`
           };
           
           await transporter.sendMail(mailOptions, function(error, info){
