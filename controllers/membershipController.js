@@ -293,7 +293,7 @@ exports.StripeWebhook =  async (req, res) => {
             subject: 'Thanks for joining Muneland',
             html: `
             <div style="text-align:center;">
-            <img src="cid:image1" />
+            <img src="cid:image1" width="163" height="52" />
             </div>
             <p>Hi ${clientInfo.firstName} &#x1F44B;. <br />We are so excited to have you on board with Muneland! &#x1F973; &#x1F973; &#x1F973;</p>
             <br />
@@ -303,12 +303,12 @@ exports.StripeWebhook =  async (req, res) => {
             <h4>Value</h4>
             <p>Muneland is a Platform to allow you to ask the essential questions and topics for establishing a strategy, and implementation of a solution around the Metaverse. The topics are laid out in the form of deliverables of activities to be followed by you (or by a team) and to help you achieve Leadership within your industry.</p>
             <p>Be the first one who gets access to our new information that we may send you anytime.</p>
+            <div>
             <p>Explore them!</p>
-            <div style="text-align:right;">
-            <img src="cid:image2" />
-            </div>
+            <img src="cid:image2" width="233" height="261" style="float:right;" />
             <p>Enjoy your moments on Muneland and don't hesitate to contact us if you have any question!
             </p>
+            </div>
             <p>Muneland Team</p>`,
             attachments: [
               {
