@@ -33,9 +33,5 @@ router
 .route('/reLogin')
 .post(protectController.ProtectClient, controller.ReLogin);
 
-// test email
-// router
-// .route('/testemail')
-// .post(controller.EmailCheckTest)
 
 module.exports = router;

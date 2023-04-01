@@ -7,8 +7,6 @@ const nodemailer = require("nodemailer");
 const fs = require('fs');
 
 
-
-
 exports.AddMembershipPlan = async (req,res) => {
 
     try{
@@ -39,10 +37,12 @@ exports.StrategyAndVision = async (req,res, next) => {
         const query = Membership.findOne({name: 'Strategy & Vision'});
         const strategyAndVision = await query;
 
+        
+
         const querySecond = Client.findById(req.body.clientID);
         const ClientInfo = await querySecond;
 
-        if (strategyAndVision.name === ClientInfo.plan){
+        if (ClientInfo.plan.includes(strategyAndVision.name) == true){
             res.status(200).json({status: 200, message: 'success', data: strategyAndVision});
         }
         else{
@@ -66,7 +66,7 @@ exports.Solution = async (req,res, next) => {
         const querySecond = Client.findById(req.body.clientID);
         const ClientInfo = await querySecond;
 
-        if (solution.name === ClientInfo.plan){
+        if (ClientInfo.plan.includes(solution.name) == true){
             res.status(200).json({status: 200, message: 'success', data: solution});
         }
         else{
@@ -88,7 +88,7 @@ exports.Leadership = async (req,res, next) => {
         const querySecond = Client.findById(req.body.clientID);
         const ClientInfo = await querySecond;
 
-        if (leadership.name === ClientInfo.plan){
+        if (ClientInfo.plan.includes(leadership.name) == true){
             res.status(200).json({status: 200, message: 'success', data: leadership});
         }
         else{
@@ -245,16 +245,14 @@ exports.StripeWebhook =  async (req, res) => {
       }
 
         const filter = {_id: event.data.object.metadata.clientID};
-        // const update = {plan: event.data.object.metadata.membershipID};
         const update = { $push: { plan: MembershipName.name } }
         
         const query = Client.updateOne(filter, update, {new: true, runValidators: true});
         const MembershipBought = await query;
-      
+
         console.log('Payment successful');
 
     } else if (event.type === 'checkout.session.failed') {
-      // Payment failed, call the failure function
       console.log('Payment failed');
     }
   
@@ -266,8 +264,6 @@ exports.StripeWebhook =  async (req, res) => {
         
         const query = Client.findOne({_id: req.body.clientID}).select('-createdAt -updatedAt -__v');
         const findClient = await query;
-
-        // const token = jwt.sign({id: findClient._id}, 'muneland-secret');
 
         const querySecond = Freelancer.find().select('-selfRating -cost -createdAt -updatedAt -__v -password');
         const listFreelancers = await querySecond;
@@ -281,94 +277,3 @@ exports.StripeWebhook =  async (req, res) => {
         res.status(404).json({status:404, message: 'fail'})
     }
   }
-
-  // exports.EmailCheckTest = async (req,res) => {
-  //   try{
-  //       // let x = fs.createReadStream('images/icon.png');
-  //       // console.log(x);
-  //       // throw new Error('please bitch');
-  //       const queryClient = Client.findOne({_id: req.body.clientID});
-  //       const clientInfo = await queryClient;
-
-  //       let transporter = nodemailer.createTransport({
-  //           host: "smtp-mail.outlook.com",
-  //           port: 587,
-  //           secure: false,
-  //           auth: {
-  //             user: process.env.EMAIL,
-  //             pass: process.env.PASSWORD
-  //           },
-  //           tls: {
-  //               ciphers:'SSLv3'
-  //           }
-  //         });
-  //         transporter.verify(function (error, success) {
-  //           if (error) {
-  //             console.log(error);
-  //           } else {
-  //             console.log("Server is ready to take our messages");
-  //           }
-  //         });
-  //         let mailOptions = {
-  //           from: process.env.EMAIL,
-  //           to: clientInfo.emailAddress,
-  //           subject: 'Thanks for joining Muneland',
-  //           html: `
-  //           <div style="text-align:center;">
-  //           <img src="cid:image1" width="163" height="52" />
-  //           </div>
-  //           <p>Hi ${clientInfo.firstName} &#x1F44B;. <br />We are so excited to have you on board with Muneland! &#x1F973; &#x1F973; &#x1F973;</p>
-  //           <br />
-  //           <h4 style="display:inline;">WHY?</h4>   <img src="cid:image3" width="20px" height="20px"/>
-  //           <p>The need for a sustainable and insightful asset that could guide the technological conversations became prevalent with a sudden spurt of interest in the metaverse. That's why we've created Muneland.</p>
-  //           <br />
-  //           <h4 style="display:inline;">Value</h4>  <img src="cid:image4" width="20px" height="20px" />
-  //           <p>Muneland is a Platform to allow you to ask the essential questions and topics for establishing a strategy, and implementation of a solution around the Metaverse. The topics are laid out in the form of deliverables of activities to be followed by you (or by a team) and to help you achieve Leadership within your industry.</p>
-  //           <p>Be the first one who gets access to our new information that we may send you anytime.</p>
-  //           <div>
-  //           <p>Explore them!</p>
-  //           <img src="cid:image2" width="117" height="130" style="float:right;" />
-  //           <p>Enjoy your moments on Muneland and don't hesitate to contact us if you have any question!
-  //           </p>
-  //           </div>
-  //           <p">Muneland Team</p>`,
-  //           attachments: [
-  //             {
-  //               filename: 'icon.png',
-  //               content: fs.createReadStream('images/icon.png'),
-  //               cid: 'image1'
-  //             },
-  //             {
-  //               filename: 'man.png',
-  //               content: fs.createReadStream('images/man.png'),
-  //               cid: 'image2'
-  //             },
-  //             {
-  //               filename: 'why.png',
-  //               content: fs.createReadStream('images/why.png'),
-  //               cid: 'image3'
-  //             },
-  //             {
-  //               filename: 'value.png',
-  //               content: fs.createReadStream('images/value.png'),
-  //               cid: 'image4'
-  //             }
-  //           ]
-  //         };
-          
-  //         await transporter.sendMail(mailOptions, function(error, info){
-  //           if (error) {
-  //               console.log(error);
-  //               throw new Error ('Unexpected Error while sending Email')
-  //           } else {
-  //               console.log('Email sent: ' + info.response);
-                
-  //           }
-  //         });
-  //         res.send('success');
-  //   }
-  //   catch(err){
-  //       console.log(err);
-  //       res.send('fail')
-  //   }
-  // }
